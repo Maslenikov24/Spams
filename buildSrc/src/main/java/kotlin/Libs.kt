@@ -43,6 +43,8 @@ object Libs {
     // Networking
     const val okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logging_interceptor}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofit_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    const val retrofit_coroutines_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofit_coroutines}"
 
     // Glide
     const val glide_runtime = "com.github.bumptech.glide:glide:${Versions.glide}"

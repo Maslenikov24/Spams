@@ -76,13 +76,15 @@ dependencies {
     //Networking
     implementation(Libs.okhttp_logging_interceptor)
     implementation(Libs.retrofit)
+    implementation(Libs.retrofit_converter)
+    implementation(Libs.retrofit_coroutines_adapter)
 
     // Coroutines
     implementation(Libs.coroutines_android)
     implementation(Libs.coroutines)
 
     //Timber
-    //implementation(Libs.timber)
+    implementation(Libs.timber)
 
     testImplementation(Libs.junit_test)
     androidTestImplementation(Libs.androidx_test_junit)
