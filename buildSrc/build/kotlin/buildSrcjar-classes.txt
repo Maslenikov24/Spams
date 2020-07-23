@@ -1,0 +1,1 @@
+E:\1_Study\Android\Mvvm_coroutines_toothpick_room\buildSrc\build\classes\kotlin\main\Libs.class;E:\1_Study\Android\Mvvm_coroutines_toothpick_room\buildSrc\build\classes\kotlin\main\Versions.class
