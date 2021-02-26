@@ -1,20 +1,49 @@
 package com.univer.mvvm_coroutines_toothpick_room
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 
-abstract class BaseViewModel<T>: ViewModel() {
+abstract class BaseViewModel<S, A, E>: ViewModel() {
 
-    protected abstract val defaultState: T
+    //action - _viewStates
+    //state = viewStates()
+    //MVI - M(State), V(View), I(Event)
 
-    protected val action: MutableLiveData<T> = MutableLiveData()
+    //protected abstract val defaultState: S
 
-    val state: LiveData<T> get() = action
+    private val _viewStates: MutableStateFlow<S?> = MutableStateFlow(null)
+    fun viewStates(): StateFlow<S?> = _viewStates
 
-    val currentState: T
-        get() = action.value?: defaultState
+    private var _viewState: S? = null
+    protected var viewState: S
+        get() = _viewState
+            ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
+        set(value) {
+            /** StateFlow doesn't work with same values */
+            if (_viewStates.value == value) {
+                _viewStates.value = null
+            }
+            _viewStates.value = value
+        }
+
+    private var _viewActions: MutableStateFlow<A?> = MutableStateFlow(null)
+    fun viewActions(): StateFlow<A?> = _viewActions
+
+    private var _viewAction: A? = null
+    protected var viewAction: A
+        get() = _viewAction
+            ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
+        set(value) {
+            //_viewAction = value
+            if (_viewActions.value == value) {
+                _viewActions.value = null
+            }
+            _viewActions.value = value
+        }
+
+    abstract fun obtainEvent(viewEvent: E)
 
     init {
         Timber.e("viewModelLiveCircle start ${this::class.java}")

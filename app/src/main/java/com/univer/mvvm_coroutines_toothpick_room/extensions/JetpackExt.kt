@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.collect
 
-fun <T: Any, L: LiveData<T>> Fragment.subscribe(liveData: L, block: (T) -> Unit) =
-    liveData.observe(
-        viewLifecycleOwner,
-        Observer(block)
-    )
+suspend fun <T: Any, SF: SharedFlow<T?>> Fragment.subscribe(sharedFlow: SF, block: (T) -> Unit) =
+    sharedFlow.collect {
+        state -> state?.let {block(it)}
+    }
 
-fun <T: Any, L: LiveData<T>> AppCompatActivity.subscribe(liveData: L, block: (T) -> Unit) =
-    liveData.observe(
-        this,
-        Observer(block)
-    )
+suspend fun <T: Any?, SF: SharedFlow<T?>> AppCompatActivity.subscribe(sharedFlow: SF, block: (T) -> Unit) =
+    sharedFlow.collect {
+            state -> state?.let {block(it)}
+    }

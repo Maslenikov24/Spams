@@ -25,7 +25,7 @@ object Versions {
     const val androidx_test_espresso = "3.2.0"
 
     // Kotlin
-    const val kotlin_coroutines = "1.3.6"
+    const val kotlin_coroutines = "1.4.2"
 
     // Toothpick
     const val toothpick = "3.1.0"

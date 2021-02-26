@@ -17,7 +17,7 @@ object Libs {
     const val androidx_test_junit = "androidx.test.ext:junit:${Versions.androidx_test_junit}"
     const val androidx_test_espresso = "androidx.test.espresso:espresso-core:${Versions.androidx_test_espresso}"
 
-    // Kotlin
+    // Coroutines
     const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin_coroutines}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines}"
 
@@ -34,6 +34,7 @@ object Libs {
     const val lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val lifecycle_viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
 
     // AdapterDelegates
     const val adapter_delegates = "com.hannesdorfmann:adapterdelegates4:${Versions.adapter_delegates4}"

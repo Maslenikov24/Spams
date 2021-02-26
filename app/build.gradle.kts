@@ -9,6 +9,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kotlin-android")
 }
 
 android {
@@ -48,6 +49,7 @@ dependencies {
     implementation(Libs.androidx_material)
     implementation(Libs.androidx_cardview)
     implementation(Libs.androidx_recyclerview)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
 
     testImplementation(Libs.junit_test)
@@ -67,6 +69,7 @@ dependencies {
     implementation(Libs.lifecycle_extensions)
     implementation(Libs.lifecycle_livedata)
     implementation(Libs.lifecycle_viewmodel)
+    implementation(Libs.lifecycle_runtime)
 
     // Adapter Delegates
     implementation(Libs.adapter_delegates)
@@ -89,38 +92,4 @@ dependencies {
     testImplementation(Libs.junit_test)
     androidTestImplementation(Libs.androidx_test_junit)
     androidTestImplementation(Libs.androidx_test_espresso)
-
-    /*// DI
-    implementation("com.github.stephanenicolas.toothpick:ktp:${Versions.toothpick}")
-    implementation("com.github.stephanenicolas.toothpick:toothpick-compiler:${Versions.toothpick}")
-    implementation("com.github.stephanenicolas.toothpick:smoothie-lifecycle-viewmodel-ktp:${Versions.toothpick}")
-    kapt("com.github.stephanenicolas.toothpick:smoothie-lifecycle-ktp:${Versions.toothpick}")
-
-    // Cicerone
-    implementation("ru.terrakok.cicerone:cicerone:${Versions.cicerone}")
-
-    // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}")
-
-    // Adapter Delegates
-    //implementation("com.hannesdorfmann:adapterdelegates4:${Versions.adapter_delegates4}")
-    //implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:${Versions.adapter_delegates4}")
-    //implementation("com.hannesdorfmann:adapterdelegates4-pagination:${Versions.adapter_delegates4}")
-
-    implementation(Libs.adapter_delegates)
-    implementation(Libs.adapter_delegates_dsl)
-    implementation(Libs.adapter_delegate_pagination)
-
-    //Networking
-    implementation("com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logging_interceptor}")
-    implementation("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin_coroutines}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines}")
-
-    //Timber
-    implementation("com.jakewharton.timber:timber:4.7.1")*/
 }
