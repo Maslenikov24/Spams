@@ -1,13 +1,12 @@
-package com.univer.mvvm_coroutines_toothpick_room
+package com.univer.mvvm_coroutines_toothpick_room.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.coroutines.GlobalScope
+import com.univer.mvvm_coroutines_toothpick_room.R
 
-private const val ARG_PARAM1 = "param1"
 class MainFlowFragment : Fragment() {
 
 	private var param1: String? = null
@@ -33,6 +32,7 @@ class MainFlowFragment : Fragment() {
 	}
 
 	companion object {
+		private const val ARG_PARAM1 = "param1"
 
 		fun newInstance(param1: String, param2: String) =
 			MainFlowFragment().apply {

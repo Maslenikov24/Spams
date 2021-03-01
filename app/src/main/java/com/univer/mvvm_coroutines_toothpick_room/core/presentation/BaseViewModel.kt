@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room
+package com.univer.mvvm_coroutines_toothpick_room.core.presentation
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,30 +16,30 @@ abstract class BaseViewModel<S, A, E>: ViewModel() {
     private val _viewStates: MutableStateFlow<S?> = MutableStateFlow(null)
     fun viewStates(): StateFlow<S?> = _viewStates
 
-    private var _viewState: S? = null
     protected var viewState: S
-        get() = _viewState
+        get() = _viewStates.value
             ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
         set(value) {
             /** StateFlow doesn't work with same values */
             if (_viewStates.value == value) {
                 _viewStates.value = null
             }
+
             _viewStates.value = value
         }
 
     private var _viewActions: MutableStateFlow<A?> = MutableStateFlow(null)
     fun viewActions(): StateFlow<A?> = _viewActions
 
-    private var _viewAction: A? = null
     protected var viewAction: A
-        get() = _viewAction
+        get() = _viewActions.value
             ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
         set(value) {
             //_viewAction = value
             if (_viewActions.value == value) {
                 _viewActions.value = null
             }
+
             _viewActions.value = value
         }
 

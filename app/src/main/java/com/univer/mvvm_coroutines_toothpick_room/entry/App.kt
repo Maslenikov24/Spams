@@ -1,16 +1,16 @@
-package com.univer.mvvm_coroutines_toothpick_room
+package com.univer.mvvm_coroutines_toothpick_room.entry
 
 import android.app.Application
-import com.univer.mvvm_coroutines_toothpick_room.di.AppScope
+import com.univer.mvvm_coroutines_toothpick_room.BuildConfig
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
-import com.univer.mvvm_coroutines_toothpick_room.di.appModule
-import com.univer.mvvm_coroutines_toothpick_room.di.navigationModule
+import com.univer.mvvm_coroutines_toothpick_room.di.module.appModule
+import com.univer.mvvm_coroutines_toothpick_room.di.module.navigationModule
 import timber.log.Timber
 import toothpick.Scope
 import toothpick.configuration.Configuration
 import toothpick.ktp.KTP
 
-class BaseApplication: Application() {
+class App: Application() {
 
     private lateinit var appScope: Scope
 

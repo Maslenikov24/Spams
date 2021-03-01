@@ -1,43 +1,44 @@
-package com.univer.mvvm_coroutines_toothpick_room
+package com.univer.mvvm_coroutines_toothpick_room.entry
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.univer.mvvm_coroutines_toothpick_room.di.ActivityScope
-import com.univer.mvvm_coroutines_toothpick_room.di.AppScope
+import com.univer.mvvm_coroutines_toothpick_room.R
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.log
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
 import com.univer.mvvm_coroutines_toothpick_room.di.utils.ToothpickViewModelFactory
-import com.univer.mvvm_coroutines_toothpick_room.extensions.subscribe
-import com.univer.mvvm_coroutines_toothpick_room.models.AppAction
-import com.univer.mvvm_coroutines_toothpick_room.models.AppViewState
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toast
+import com.univer.mvvm_coroutines_toothpick_room.entry.models.AppAction
+import com.univer.mvvm_coroutines_toothpick_room.entry.models.AppEvent
+import com.univer.mvvm_coroutines_toothpick_room.entry.models.AppViewState
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.filterNotNull
 import toothpick.Toothpick
 import toothpick.ktp.delegate.inject
 import toothpick.smoothie.lifecycle.closeOnDestroy
 import toothpick.smoothie.viewmodel.installViewModelBinding
 
 //TODO: Rename activity
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val mainViewModel by inject<MainViewModel>()
+    private val appViewModel by inject<AppViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initAppScope()
         super.onCreate(savedInstanceState)
 
-        lifecycleScope.launchWhenStarted {
-            subscribe(mainViewModel.viewStates(), ::renderViewState)
-            subscribe(mainViewModel.viewActions(), ::renderAction)
-        }
+        subscribe(appViewModel.viewStates(), ::renderViewState)
+        subscribe(appViewModel.viewActions(), ::renderAction)
 
-        mainViewModel.test()
+        appViewModel.obtainEvent(AppEvent.AppFirstStartEvent)
+
     }
 
     private fun initAppScope(){
         Toothpick.openScope(Scopes.APP_SCOPE)
             .openSubScope(Scopes.ACTIVITY_SCOPE){
-                it.installViewModelBinding<MainViewModel>(
+                it.installViewModelBinding<AppViewModel>(
                     this,
                     ToothpickViewModelFactory(Scopes.ACTIVITY_SCOPE)
                 )
@@ -60,6 +61,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun renderAction(appAction: AppAction){
-
+        when (appAction){
+            is AppAction.AppLogAction -> {
+                toast("Success")
+                //log("Success123")
+            }
+        }
     }
 }
