@@ -26,6 +26,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -76,7 +80,7 @@ dependencies {
     implementation(Libs.adapter_delegates_dsl)
     implementation(Libs.adapter_delegate_pagination)
 
-    //Networking
+    // Networking
     implementation(Libs.okhttp_logging_interceptor)
     implementation(Libs.retrofit)
     implementation(Libs.retrofit_converter)
@@ -86,9 +90,13 @@ dependencies {
     implementation(Libs.coroutines_android)
     implementation(Libs.coroutines)
 
-    //Timber
+    // Timber
     implementation(Libs.timber)
 
+    // ViewBinding
+    implementation(Libs.view_binding)
+
+    // Test
     testImplementation(Libs.junit_test)
     androidTestImplementation(Libs.androidx_test_junit)
     androidTestImplementation(Libs.androidx_test_espresso)

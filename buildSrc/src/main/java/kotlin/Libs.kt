@@ -12,6 +12,9 @@ object Libs {
     const val androidx_core = "androidx.core:core-ktx:${Versions.ktx}"
     const val androidx_constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidx_constraint_layout}"
 
+    // ViewBinding
+    const val view_binding = "com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:${Versions.view_binding}"
+
     // Test
     const val junit_test = "junit:junit:${Versions.junit_test}"
     const val androidx_test_junit = "androidx.test.ext:junit:${Versions.androidx_test_junit}"
@@ -28,7 +31,7 @@ object Libs {
     const val toothpick_smoothie_lifecycle = "com.github.stephanenicolas.toothpick:smoothie-lifecycle-ktp:${Versions.toothpick}"
 
     // Cicerone
-    const val cicerone = "ru.terrakok.cicerone:cicerone:${Versions.cicerone}"
+    const val cicerone = "com.github.terrakok:cicerone:${Versions.cicerone}"
 
     // Lifecycle
     const val lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"

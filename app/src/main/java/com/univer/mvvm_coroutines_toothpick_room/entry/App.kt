@@ -5,6 +5,7 @@ import com.univer.mvvm_coroutines_toothpick_room.BuildConfig
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
 import com.univer.mvvm_coroutines_toothpick_room.di.module.appModule
 import com.univer.mvvm_coroutines_toothpick_room.di.module.navigationModule
+import com.univer.mvvm_coroutines_toothpick_room.di.module.roomModule
 import timber.log.Timber
 import toothpick.Scope
 import toothpick.configuration.Configuration
@@ -39,7 +40,8 @@ class App: Application() {
         appScope = KTP.openScope(Scopes.APP_SCOPE)
             .installModules(
                 appModule(this),
-                navigationModule()
+                navigationModule(),
+                roomModule(this)
             )
     }
 

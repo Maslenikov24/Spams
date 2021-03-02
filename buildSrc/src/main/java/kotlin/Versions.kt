@@ -19,6 +19,9 @@ object Versions {
     const val transition_transition = "1.2.0"
     const val android_paging_ktx = "2.1.2"
 
+    // View Binding
+    const val view_binding = "1.4.1"
+
     // Test
     const val junit_test = "4.13"
     const val androidx_test_junit = "1.1.1"
@@ -31,7 +34,7 @@ object Versions {
     const val toothpick = "3.1.0"
 
     // Cicerone
-    const val cicerone = "5.1.0"
+    const val cicerone = "6.6"
 
     //Lifecycle
     const val lifecycle = "2.2.0"

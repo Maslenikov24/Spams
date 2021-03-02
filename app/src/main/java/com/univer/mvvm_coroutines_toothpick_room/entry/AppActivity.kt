@@ -3,6 +3,9 @@ package com.univer.mvvm_coroutines_toothpick_room.entry
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.github.terrakok.cicerone.Command
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.univer.mvvm_coroutines_toothpick_room.R
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.log
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
@@ -22,16 +25,25 @@ import toothpick.smoothie.viewmodel.installViewModelBinding
 //TODO: Rename activity
 class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val appViewModel by inject<AppViewModel>()
+    private val viewModel by inject<AppViewModel>()
+
+    private val navigator: Navigator = object : AppNavigator(this, R.id.container/*, supportFragmentManager*/){
+        override fun applyCommand(command: Command) {
+            super.applyCommand(command)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initAppScope()
         super.onCreate(savedInstanceState)
 
-        subscribe(appViewModel.viewStates(), ::renderViewState)
-        subscribe(appViewModel.viewActions(), ::renderAction)
+        subscribe(viewModel.viewStates(), ::renderViewState)
+        subscribe(viewModel.viewActions(), ::renderAction)
 
-        appViewModel.obtainEvent(AppEvent.AppFirstStartEvent)
+        //appViewModel.obtainEvent(AppEvent.AppFirstStartEvent)
+        if (savedInstanceState == null){
+            viewModel.obtainEvent(AppEvent.AppFirstStartEvent)
+        }
 
     }
 
@@ -46,16 +58,16 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
             .inject(this)
     }
 
-    private fun renderViewState(appState: AppViewState){
-        when (appState){
+    private fun renderViewState(appViewState: AppViewState){
+        when (appViewState){
             is AppViewState.AppErrorState -> {
-                testTextView.text = "Wow"
+                /* nothing */
             }
             is AppViewState.AppFirstStartState -> {
                 /* nothing */
             }
             is AppViewState.TestState -> {
-                testTextView.text = appState.text
+                /* nothing */
             }
         }
     }
@@ -67,5 +79,15 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
                 //log("Success123")
             }
         }
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        viewModel.addNavigator(navigator)
+    }
+
+    override fun onPause() {
+        viewModel.removeNavigator()
+        super.onPause()
     }
 }
