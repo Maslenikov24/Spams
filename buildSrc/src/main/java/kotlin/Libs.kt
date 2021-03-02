@@ -33,6 +33,11 @@ object Libs {
     // Cicerone
     const val cicerone = "com.github.terrakok:cicerone:${Versions.cicerone}"
 
+    //Room
+    const val room_runtime = "androidx.room:room-runtime:${Versions.room}"
+    const val room_compiler = "androidx.room:room-compiler:${Versions.room}"
+    const val room = "androidx.room:room-ktx:${Versions.room}"
+
     // Lifecycle
     const val lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"

@@ -36,18 +36,21 @@ object Versions {
     // Cicerone
     const val cicerone = "6.6"
 
-    //Lifecycle
+    // Room
+    const val room = "2.2.6"
+
+    // Lifecycle
     const val lifecycle = "2.2.0"
 
-    //AdapterDelegates
+    // AdapterDelegates
     const val adapter_delegates4 = "4.3.0"
 
-    //Networking
+    // Networking
     const val okhttp_logging_interceptor = "3.12.0"
     const val retrofit = "2.9.0"
     const val retrofit_coroutines = "0.9.2"
 
-    //Timber
+    // Timber
     const val timber = "4.7.1"
 
     // Glide

@@ -69,6 +69,11 @@ dependencies {
     // Cicerone
     implementation(Libs.cicerone)
 
+    // Room
+    implementation(Libs.room_runtime)
+    kapt(Libs.room_compiler)
+    implementation(Libs.room)
+
     // Lifecycle
     implementation(Libs.lifecycle_extensions)
     implementation(Libs.lifecycle_livedata)
