@@ -77,6 +77,8 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
 		savedInstanceState: Bundle?
 	): View = binging.root
 
+	open fun onBackPressed() {}
+
 	//TODO: understand it
 	protected inline fun <reified T : ViewModel> Scope.installViewModel() {
 		installViewModelBinding<T>(this@BaseFragment, ToothpickViewModelFactory(name))

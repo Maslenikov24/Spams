@@ -17,6 +17,7 @@ class AppViewModel @Inject constructor(
 	override fun obtainEvent(viewEvent: AppEvent) {
 		when (viewEvent){
 			is AppEvent.AppFirstStartEvent -> firstLaunch()
+			is AppEvent.AppBackPressedEvent -> onBackPressed()
 		}
 	}
 
@@ -25,5 +26,9 @@ class AppViewModel @Inject constructor(
 	private fun initialized(){
 		viewState = AppViewState.TestState("Cool!")
 		viewAction = AppAction.AppLogAction
+	}
+
+	private fun onBackPressed(){
+		/* nothing */
 	}
 }

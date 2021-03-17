@@ -3,23 +3,32 @@ package com.univer.mvvm_coroutines_toothpick_room.presentation.main
 import android.os.Bundle
 import android.view.View
 import com.univer.mvvm_coroutines_toothpick_room.R
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toast
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
 import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentMainFlowBinding
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowAction
+import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowViewState
 import toothpick.ktp.delegate.inject
 
 class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 
-	private val mainFlowViewModel by inject<MainFlowViewModel>()
+	private val viewModel by inject<MainFlowViewModel>()
 
 	private val currentFragment: BaseFragment<*>?
 		get() = childFragmentManager.fragments.firstOrNull { !it.isHidden} as? BaseFragment<*>
+
+	override fun onBackPressed() {
+		currentFragment?.onBackPressed()
+	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		configureBottomTabs()
 		selectTab(currentFragment?.tag?: TAB_SEARCH)
+		subscribe(viewModel.viewStates(), ::renderViewState)
+		subscribe(viewModel.viewActions(), ::renderActions)
 	}
 
 	override fun renderViewState(mainFlowViewState: MainFlowViewState) {
@@ -27,7 +36,14 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 	}
 
 	override fun renderActions(mainFlowActions: MainFlowAction) {
-		/*nothing*/
+		when (mainFlowActions){
+			is MainFlowAction.MainFlowShowNotifyAction -> {
+				toast("Точно?")
+			}
+			is MainFlowAction.MainFlowBackPressedAction -> {
+				currentFragment?.onBackPressed()
+			}
+		}
 	}
 
 	private fun configureBottomTabs(){
@@ -65,7 +81,6 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 	}
 
 	private fun getTabFragment(key: String) = TabContainerFragment.newInstance(key)
-
 
 	companion object {
 		const val TAB_SEARCH = "tab_search"

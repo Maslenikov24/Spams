@@ -7,6 +7,7 @@ import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.univer.mvvm_coroutines_toothpick_room.R
 import com.univer.mvvm_coroutines_toothpick_room.core.Screens
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toast
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
 import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentTabBinding
 import com.univer.mvvm_coroutines_toothpick_room.di.LocalCiceroneHolder
@@ -28,13 +29,12 @@ class TabContainerFragment : BaseFragment<FragmentTabBinding>(), RouterProvider 
 	override val router: Router
 		get() = cicerone.router
 
-	override fun installModules(scope: Scope) {
-		super.installModules(scope)
-	}
+	private val currentFragment: BaseFragment<*>?
+		get() = childFragmentManager.fragments.firstOrNull { !it.isHidden} as? BaseFragment<*>
+
 
 	override fun onActivityCreated(savedInstanceState: Bundle?) {
 		super.onActivityCreated(savedInstanceState)
-		val a = containerName
 		if (childFragmentManager.findFragmentById(R.id.tab_container) == null){
 			cicerone.router.replaceScreen(
 				when (containerName){
@@ -48,7 +48,6 @@ class TabContainerFragment : BaseFragment<FragmentTabBinding>(), RouterProvider 
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		val a = containerName
 	}
 
 	override fun onResume() {
@@ -59,6 +58,10 @@ class TabContainerFragment : BaseFragment<FragmentTabBinding>(), RouterProvider 
 	override fun onPause() {
 		super.onPause()
 		cicerone.getNavigatorHolder().removeNavigator()
+	}
+
+	override fun onBackPressed() {
+		currentFragment?.onBackPressed()
 	}
 
 	companion object {
