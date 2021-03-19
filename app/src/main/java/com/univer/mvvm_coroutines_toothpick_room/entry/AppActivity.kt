@@ -20,7 +20,6 @@ import toothpick.ktp.delegate.inject
 import toothpick.smoothie.lifecycle.closeOnDestroy
 import toothpick.smoothie.viewmodel.installViewModelBinding
 
-//TODO: Rename activity
 class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val viewModel by inject<AppViewModel>()

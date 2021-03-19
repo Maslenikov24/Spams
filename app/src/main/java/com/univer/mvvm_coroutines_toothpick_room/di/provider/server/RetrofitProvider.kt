@@ -8,12 +8,13 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 class RetrofitProvider @Inject constructor(
+	private val apiPath: String,
 	private val okHttpClient: OkHttpClient,
 	private val moshiConverterFactory: MoshiConverterFactory
 ): Provider<Retrofit> {
 
 	override fun get(): Retrofit = Retrofit.Builder()
-		.baseUrl("apiPath")
+		.baseUrl(apiPath)
 			.client(okHttpClient)
 			.addConverterFactory(moshiConverterFactory)
 			.addCallAdapterFactory(CoroutineCallAdapterFactory())

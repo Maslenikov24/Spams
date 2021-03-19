@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="8dp"
+    android:gravity="center_horizontal">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/searchInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:layout_marginEnd="8dp"
+        android:hint="Номер телефона"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toStartOf="@id/button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/searchText"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <ImageView
         android:id="@+id/button"
         android:text="button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_marginLeft="8dp"
+        android:padding="8dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_search"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/searchInputLayout"
+        app:layout_constraintBottom_toBottomOf="@id/searchInputLayout"/>
 
     <!--<com.google.android.material.button.MaterialButton
         android:id="@+id/button"
@@ -29,4 +47,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>-->
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

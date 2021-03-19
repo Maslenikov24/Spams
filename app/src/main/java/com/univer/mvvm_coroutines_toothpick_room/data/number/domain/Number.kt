@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room.model.number
+package com.univer.mvvm_coroutines_toothpick_room.data.number.domain
 
 import java.util.*
 

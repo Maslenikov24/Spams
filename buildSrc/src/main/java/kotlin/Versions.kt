@@ -8,7 +8,7 @@ object Versions {
     //AndroidX
     const val androidx_appcompat = "1.1.0"
     const val androidx_constraint_layout = "2.0.0-beta4"
-    const val androidx_material = "1.1.0"
+    const val androidx_material = "1.3.0"
     const val androidx_cardview = "1.0.0"
     const val androidx_recyclerview = "1.1.0"
     const val ktx = "1.3.0"
