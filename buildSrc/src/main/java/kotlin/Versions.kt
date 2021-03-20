@@ -22,6 +22,9 @@ object Versions {
     // View Binding
     const val view_binding = "1.4.1"
 
+    // Coil
+    const val coil = "1.1.1"
+
     // Test
     const val junit_test = "4.13"
     const val androidx_test_junit = "1.1.1"

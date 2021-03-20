@@ -40,6 +40,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 
 }
 
@@ -101,6 +104,9 @@ dependencies {
 
     // ViewBinding
     implementation(Libs.view_binding)
+
+    // Coil
+    implementation(Libs.coil)
 
     // Test
     testImplementation(Libs.junit_test)

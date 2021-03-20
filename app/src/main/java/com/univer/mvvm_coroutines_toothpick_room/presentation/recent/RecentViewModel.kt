@@ -7,10 +7,12 @@ import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.models.Rece
 import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.models.RecentEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.models.RecentViewState
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class RecentViewModel @Inject constructor(
-	private val router : Router
+	private val router : Router,
+	private val recentInteractor: RecentInteractor
 ): BaseViewModel<RecentViewState, RecentAction, RecentEvent>() {
 
 	private var backPressedOnce = false
@@ -36,9 +38,13 @@ class RecentViewModel @Inject constructor(
 		}
 	}
 
-	private fun onBackPressed() = router.exit()
-
-	private fun getRecent(){
-
+	private fun getRecent() {
+		io {
+			recentInteractor.getPhoneBook().collect {
+				ui { viewState = RecentViewState.ShowRecent(it) }
+			}
+		}
 	}
+
+	private fun onBackPressed() = router.exit()
 }

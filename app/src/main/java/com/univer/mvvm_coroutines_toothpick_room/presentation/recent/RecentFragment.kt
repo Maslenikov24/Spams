@@ -3,6 +3,8 @@ package com.univer.mvvm_coroutines_toothpick_room.presentation.recent
 import android.os.Bundle
 import android.view.View
 import com.github.terrakok.cicerone.Router
+import com.univer.mvvm_coroutines_toothpick_room.core.Permissions
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.checkPermission
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.snack
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
@@ -31,15 +33,37 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 		scope.installViewModel<RecentViewModel>()
 	}
 
+	override fun onRequestPermissionsResult(
+		requestCode: Int,
+		permissions: Array<out String>,
+		grantResults: IntArray
+	) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+		var accessCallLog = true
+		var accessContacts = true
+		permissions.forEachIndexed { index, it ->
+			when (it){
+				Permissions.READ_CALL_LOG -> {
+					if (grantResults[index] != 0) accessCallLog = false
+				}
+				Permissions.READ_CONTACTS -> {
+					if (grantResults[index] != 0) accessContacts = false
+				}
+			}
+		}
+		if (accessCallLog && accessContacts){
+			viewModel.obtainEvent(RecentEvent.LoadRecent)
+		}
+	}
+
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		subscribe(viewModel.viewStates(), ::renderViewState)
 		subscribe(viewModel.viewActions(), ::renderAction)
 
-		binging.recyclerView.apply {
-			adapter = this@RecentFragment.adapter
-			setHasFixedSize(true)
-		}
+		binging.recyclerView.adapter = adapter
+
+		if (this.checkPermission(requireContext())) viewModel.obtainEvent(RecentEvent.LoadRecent)
 	}
 
 	override fun onBackPressed() {

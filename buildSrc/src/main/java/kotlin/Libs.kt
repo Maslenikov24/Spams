@@ -15,6 +15,9 @@ object Libs {
     // ViewBinding
     const val view_binding = "com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:${Versions.view_binding}"
 
+    // Coil
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
+
     // Test
     const val junit_test = "junit:junit:${Versions.junit_test}"
     const val androidx_test_junit = "androidx.test.ext:junit:${Versions.androidx_test_junit}"
