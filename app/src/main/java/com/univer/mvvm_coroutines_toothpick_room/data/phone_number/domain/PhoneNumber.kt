@@ -1,8 +1,8 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.number.domain
+package com.univer.mvvm_coroutines_toothpick_room.data.phone_number.domain
 
 import java.util.*
 
-data class Number(
+data class PhoneNumber(
 	val id: String,
 	val number: String,
 	val isBan: Int,

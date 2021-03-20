@@ -82,8 +82,9 @@ dependencies {
 
     // Adapter Delegates
     implementation(Libs.adapter_delegates)
-    implementation(Libs.adapter_delegates_dsl)
-    implementation(Libs.adapter_delegate_pagination)
+    implementation(Libs.adapter_delegates_viewbinding)
+//    implementation(Libs.adapter_delegates_layoutcontainer)
+//    implementation(Libs.adapter_delegate_pagination)
 
     // Networking
     implementation(Libs.okhttp_logging_interceptor)

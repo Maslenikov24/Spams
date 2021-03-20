@@ -3,7 +3,7 @@ package com.univer.mvvm_coroutines_toothpick_room.di.module
 import android.content.Context
 import androidx.room.Room
 import com.univer.mvvm_coroutines_toothpick_room.BuildConfig
-import com.univer.mvvm_coroutines_toothpick_room.data.number.db.NumberDao
+import com.univer.mvvm_coroutines_toothpick_room.data.phone_number.db.PhoneNumberDao
 import com.univer.mvvm_coroutines_toothpick_room.model.common.Database
 import toothpick.ktp.binding.bind
 import toothpick.ktp.binding.module
@@ -20,5 +20,5 @@ fun roomModule(context: Context) = module {
 		}.build()
 
 	bind<Database>().toInstance(db)
-	bind<NumberDao>().toInstance(db.numberDao())
+	bind<PhoneNumberDao>().toInstance(db.phoneNumberDao())
 }

@@ -46,7 +46,8 @@ object Libs {
 
     // AdapterDelegates
     const val adapter_delegates = "com.hannesdorfmann:adapterdelegates4:${Versions.adapter_delegates4}"
-    const val adapter_delegates_dsl = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:${Versions.adapter_delegates4}"
+    const val adapter_delegates_viewbinding = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:${Versions.adapter_delegates4}"
+    const val adapter_delegates_layoutcontainer = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:${Versions.adapter_delegates4}"
     const val adapter_delegate_pagination = "com.hannesdorfmann:adapterdelegates4-pagination:${Versions.adapter_delegates4}"
 
     // Networking

@@ -1,9 +1,9 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.number.net
+package com.univer.mvvm_coroutines_toothpick_room.data.phone_number.net
 
 import com.squareup.moshi.Json
 import java.util.*
 
-data class NumberResponse(
+data class PhoneNumberResponse(
 	@Json(name = "id") val id: String,
 	@Json(name = "number") val number: String,
 	@Json(name = "isBan") val isBan: Int,

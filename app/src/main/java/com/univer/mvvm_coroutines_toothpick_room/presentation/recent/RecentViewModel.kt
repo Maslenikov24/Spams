@@ -19,6 +19,7 @@ class RecentViewModel @Inject constructor(
 		when (viewEvent) {
 			is RecentEvent.ConfirmExit -> onConfirmExit()
 			is RecentEvent.BackPressed -> onBackPressed()
+			is RecentEvent.LoadRecent -> getRecent()
 		}
 	}
 
@@ -37,4 +38,7 @@ class RecentViewModel @Inject constructor(
 
 	private fun onBackPressed() = router.exit()
 
+	private fun getRecent(){
+
+	}
 }

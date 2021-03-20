@@ -57,10 +57,10 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
     abstract fun obtainEvent(viewEvent: E)
 
     protected fun ui(block: suspend CoroutineScope.() -> Unit): Job =
-        uiScope.launch { block(this) }
+        uiScope.launch(handler) { block(this) }
 
     protected fun io(block: suspend CoroutineScope.() -> Unit): Job =
-        ioScope.launch { block(this) }
+        ioScope.launch(handler) { block(this) }
 
     init {
         Timber.e("viewModelLiveCircle start ${this::class.java}")
