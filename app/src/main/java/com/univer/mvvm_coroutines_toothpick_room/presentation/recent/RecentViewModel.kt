@@ -2,7 +2,6 @@ package com.univer.mvvm_coroutines_toothpick_room.presentation.recent
 
 import com.github.terrakok.cicerone.Router
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseViewModel
-import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowAction
 import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.models.RecentAction
 import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.models.RecentEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.models.RecentViewState

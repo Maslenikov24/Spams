@@ -24,10 +24,10 @@ fun recentContactAdapterDelegate() = adapterDelegateViewBinding<Contact, Contact
 			if (item.count > 1) phoneNumber.text = "${phoneNumber.text} (${item.count})"
 			contactTime.text = item.date.toTime()
 			when (item.type){
-				CallLog.Calls.INCOMING_TYPE -> { contactType.load(R.drawable.ic_incoming) }
-				CallLog.Calls.OUTGOING_TYPE -> {contactType.load(R.drawable.ic_outgoing) }
-				CallLog.Calls.MISSED_TYPE -> {contactType.load(R.drawable.ic_missed) }
-				CallLog.Calls.REJECTED_TYPE -> {contactType.load(R.drawable.ic_canceled) }
+				CallLog.Calls.INCOMING_TYPE -> { contactType.setImageResource(R.drawable.ic_incoming) }
+				CallLog.Calls.OUTGOING_TYPE -> {contactType.setImageResource(R.drawable.ic_outgoing) }
+				CallLog.Calls.MISSED_TYPE -> {contactType.setImageResource(R.drawable.ic_missed) }
+				CallLog.Calls.REJECTED_TYPE -> { contactType.setImageResource(R.drawable.ic_canceled) }
 				CallLog.Calls.ANSWERED_EXTERNALLY_TYPE -> { /*nothing*/ }
 				CallLog.Calls.VOICEMAIL_TYPE -> { /*nothing*/ }
 				CallLog.Calls.BLOCKED_TYPE -> { /*nothing*/ }

@@ -1,6 +1,7 @@
 package com.univer.mvvm_coroutines_toothpick_room.core.extensions
 
 import android.app.Activity
+import android.app.Service
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -11,6 +12,9 @@ fun Fragment.toast(message: String) =
     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
 fun Activity.toast(message: String) =
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+fun Service.toast(message: String) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
 fun Fragment.log(message: String) =

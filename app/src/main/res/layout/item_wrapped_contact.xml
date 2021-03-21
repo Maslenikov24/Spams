@@ -9,15 +9,15 @@
     <TextView
         android:id="@+id/date"
         android:padding="8dp"
-        android:background="#D6D6D6"
-        android:text="Вчера"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:text="Вчера" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_corner_round"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_contact"
         tools:itemCount="3"/>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fonts -->
+    <!-- Шрифт для гарнитуры regular -->
+    <item name="font_regular" type="font">@font/roboto</item>
+    <!-- Шрифт для гарнитуры medium -->
+    <item name="font_medium" type="font">@font/roboto_medium</item>
+    <!-- Шрифт для гарнитуры bold -->
+    <item name="font_bold" type="font">@font/roboto_bold</item>
+</resources>

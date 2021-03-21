@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="50dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:clickable="true"
@@ -13,16 +12,17 @@
 
     <ImageView
         android:id="@+id/contactType"
-        android:layout_width="30dp"
-        android:layout_height="30dp"/>
+        android:layout_width="18dp"
+        android:layout_height="18dp"/>
 
     <TextView
         android:id="@+id/phoneNumber"
-        tools:text="+7(909)050-43-21"
-        android:layout_marginStart="12dp"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
         android:layout_weight="1"
-        android:layout_height="wrap_content"/>
+        style="@style/TextAppearance.Contact.Name"
+        tools:text="+7(909)050-43-21" />
 
     <TextView
         android:id="@+id/contactTime"

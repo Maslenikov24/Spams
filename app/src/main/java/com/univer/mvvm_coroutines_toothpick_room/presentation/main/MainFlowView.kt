@@ -4,6 +4,6 @@ import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFl
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowViewState
 
 interface MainFlowView {
-	fun renderViewState(mainFlowViewState: MainFlowViewState)
-	fun renderActions(mainFlowActions: MainFlowAction)
+	fun renderViewState(viewState: MainFlowViewState)
+	fun renderActions(viewActions: MainFlowAction)
 }

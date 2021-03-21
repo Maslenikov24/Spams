@@ -40,18 +40,14 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 	) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 		var accessCallLog = true
-		var accessContacts = true
 		permissions.forEachIndexed { index, it ->
 			when (it){
 				Permissions.READ_CALL_LOG -> {
 					if (grantResults[index] != 0) accessCallLog = false
 				}
-				Permissions.READ_CONTACTS -> {
-					if (grantResults[index] != 0) accessContacts = false
-				}
 			}
 		}
-		if (accessCallLog && accessContacts){
+		if (accessCallLog){
 			viewModel.obtainEvent(RecentEvent.LoadRecent)
 		}
 	}

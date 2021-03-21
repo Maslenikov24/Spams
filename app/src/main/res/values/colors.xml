@@ -18,4 +18,6 @@
     <color name="outgoingCall">#FF9800</color>
     <color name="canceledCall">#009688</color>
     <color name="dividerColor">@color/grayF7</color>
+
+    <color name="contactName">@color/black</color>
 </resources>

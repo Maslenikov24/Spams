@@ -10,6 +10,7 @@ import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentMainFlowBin
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowAction
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowViewState
+import toothpick.Scope
 import toothpick.ktp.delegate.inject
 
 class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
@@ -23,6 +24,11 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 		currentFragment?.onBackPressed()
 	}
 
+	override fun installModules(scope: Scope) {
+		super.installModules(scope)
+		scope.installViewModel<MainFlowViewModel>()
+	}
+
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		configureBottomTabs()
@@ -31,12 +37,16 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 		subscribe(viewModel.viewActions(), ::renderActions)
 	}
 
-	override fun renderViewState(mainFlowViewState: MainFlowViewState) {
-		/*nothing*/
+	override fun renderViewState(viewState: MainFlowViewState) {
+		when (viewState){
+			is MainFlowViewState.SetToolbarWith -> {
+				binging.toolbar.title = viewState.title
+			}
+		}
 	}
 
-	override fun renderActions(mainFlowActions: MainFlowAction) {
-		when (mainFlowActions){
+	override fun renderActions(viewActions: MainFlowAction) {
+		when (viewActions){
 			is MainFlowAction.MainFlowShowNotifyAction -> {
 				toast("Точно?")
 			}
@@ -50,8 +60,14 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 		binging.bottomNavigationView.apply {
 			setOnNavigationItemSelectedListener {
 				when (it.itemId){
-					R.id.search -> selectTab(TAB_SEARCH)
-					R.id.recent -> selectTab(TAB_RECENT)
+					R.id.search -> {
+						binging.toolbar.title = "Поиск номера"
+						selectTab(TAB_SEARCH)
+					}
+					R.id.recent -> {
+						binging.toolbar.title = "Список звонков"
+						selectTab(TAB_RECENT)
+					}
 				}
 				true
 			}

@@ -27,7 +27,11 @@ abstract class EventBus<T>(){
 			_mStates.value = value
 		}
 
-	fun saveItem(block: (T?) -> Unit){
+	fun update(value: T){
+		item = value
+	}
+
+	fun listen(block: (T?) -> Unit){
 		scope.launch {
 			mStates().collect { block(it) }
 		}

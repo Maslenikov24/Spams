@@ -36,7 +36,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 		super.onViewCreated(view, savedInstanceState)
 
 		binging.button.setOnClickListener {
-			viewModel.obtainEvent(SearchEvent.SearchNumber)
+			val phoneNumber = binging.searchText.text.toString()
+			viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
 		}
 
 		subscribe(viewModel.viewStates(), ::renderViewState)
