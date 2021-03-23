@@ -16,7 +16,7 @@
     </style>
 
 
-    <style name="TextAppearance.Contact.Name" parent="TextAppearance">
+    <style name="TextAppearance.Contact.Name" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/contactName</item>
     </style>

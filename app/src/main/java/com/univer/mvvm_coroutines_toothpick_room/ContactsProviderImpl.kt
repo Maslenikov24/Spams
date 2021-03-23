@@ -7,7 +7,6 @@ import android.net.Uri
 import android.provider.CallLog
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toDate
 import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.Contact
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.ContactWrapper
 
 class ContactsProviderImpl(
     private val context: Context
@@ -57,8 +56,8 @@ class ContactsProviderImpl(
         null
     )
 
-    private val calls = mutableListOf<Contact>()
-    private val wrappedCalls = mutableListOf<ContactWrapper>()
+    private val calls = mutableListOf<Contact.ContactInfo>()
+    private val wrappedCalls = mutableListOf<Contact>()
 
     private fun getCalls() {
         if (cursorCalls?.moveToFirst() == true) {
@@ -75,28 +74,25 @@ class ContactsProviderImpl(
                 val name = cursorCalls.getString(CACHED_NAME)
                 val date = cursorCalls.getLong(DATE)
 
-                number?.let { calls.add(Contact(id, number, name, null, type, date)) }
+                number?.let { calls.add(Contact.ContactInfo(id, number, name, null, type, date)) }
 
             } while (cursorCalls.moveToNext())
         }
     }
 
-    private fun wrapCalls(calls: List<Contact>){
+    private fun wrapCalls(data: List<Contact.ContactInfo>){
         var date = 0L
-        var startIndex = 0
 
-        calls.forEachIndexed { index, it ->
-
+        data.forEach {
             if (it.date.toDate().substring(0,10) != date.toDate().substring(0,10)) {
-                if (date != 0L) wrappedCalls.add(ContactWrapper(date, calls.slice(startIndex until index)))
-                startIndex = index
+                wrappedCalls.add(Contact.ContactDate(date))
                 date = it.date
             }
+            wrappedCalls.add(it)
         }
-        wrappedCalls.add(ContactWrapper(date, calls.slice(startIndex until calls.size))) //TODO: ???
     }
 
-    override fun getPhoneBook(): List<ContactWrapper> {
+    override fun getPhoneBook(): List<Contact> {
         getCalls()
         wrapCalls(calls.sortedByDescending { it.date })
         closeCursorIfExists(cursorCalls)
