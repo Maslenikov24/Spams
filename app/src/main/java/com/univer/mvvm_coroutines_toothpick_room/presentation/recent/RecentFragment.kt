@@ -8,7 +8,7 @@ import com.univer.mvvm_coroutines_toothpick_room.core.extensions.checkPermission
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.snack
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
-import com.univer.mvvm_coroutines_toothpick_room.data.contact.model.ContactWrapper
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.ContactWrapper
 import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentRecentBinding
 import com.univer.mvvm_coroutines_toothpick_room.presentation.common.RouterProvider
 import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.adapter.RecentAdapter

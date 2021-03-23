@@ -2,17 +2,17 @@ package com.univer.mvvm_coroutines_toothpick_room.model.common
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.univer.mvvm_coroutines_toothpick_room.data.phone_number.db.PhoneNumberDao
-import com.univer.mvvm_coroutines_toothpick_room.data.phone_number.db.PhoneNumberEntity
+import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryDao
+import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryEntity
 
 @Database(
 	entities = [
-		PhoneNumberEntity::class
+		HistoryEntity::class
 	],
-	version = 1
+	version = 2
 )
 
 abstract class Database: RoomDatabase() {
 
-	abstract fun phoneNumberDao(): PhoneNumberDao
+	abstract fun phoneNumberDao(): HistoryDao
 }

@@ -6,7 +6,7 @@ import com.github.terrakok.cicerone.Router
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.snack
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
-import com.univer.mvvm_coroutines_toothpick_room.data.phone_number.domain.PhoneNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.number.PhoneNumber
 import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentSearchBinding
 import com.univer.mvvm_coroutines_toothpick_room.presentation.common.RouterProvider
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.adapter.SearchAdapter

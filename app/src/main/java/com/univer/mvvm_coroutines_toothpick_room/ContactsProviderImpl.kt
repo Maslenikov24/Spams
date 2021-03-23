@@ -6,8 +6,8 @@ import android.database.Cursor
 import android.net.Uri
 import android.provider.CallLog
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toDate
-import com.univer.mvvm_coroutines_toothpick_room.data.contact.model.Contact
-import com.univer.mvvm_coroutines_toothpick_room.data.contact.model.ContactWrapper
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.Contact
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.ContactWrapper
 
 class ContactsProviderImpl(
     private val context: Context

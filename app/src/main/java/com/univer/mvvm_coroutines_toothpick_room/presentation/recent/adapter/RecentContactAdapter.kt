@@ -1,13 +1,11 @@
 package com.univer.mvvm_coroutines_toothpick_room.presentation.recent.adapter
 
 import android.provider.CallLog
-import coil.load
-import coil.transform.CircleCropTransformation
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.univer.mvvm_coroutines_toothpick_room.R
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toTime
-import com.univer.mvvm_coroutines_toothpick_room.data.contact.model.Contact
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.Contact
 import com.univer.mvvm_coroutines_toothpick_room.databinding.ItemContactBinding
 import javax.inject.Inject
 

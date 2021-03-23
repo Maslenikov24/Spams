@@ -1,6 +1,6 @@
 package com.univer.mvvm_coroutines_toothpick_room.model.search.repository
 
-import com.univer.mvvm_coroutines_toothpick_room.data.phone_number.domain.PhoneNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.number.PhoneNumber
 
 interface SearchRepository {
 	suspend fun getNumber(number: String)
