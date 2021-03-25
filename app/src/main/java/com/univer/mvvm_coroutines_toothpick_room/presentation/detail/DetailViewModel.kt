@@ -15,15 +15,13 @@ class DetailViewModel @Inject constructor(
 	override fun obtainEvent(viewEvent: DetailEvent) {
 		when (viewEvent) {
 			is DetailEvent.DetailRouteEvent -> {
-				navigateTo()
+
 			}
 			is DetailEvent.DetailBackPressedEvent -> {
 				onBackPressed()
 			}
 		}
 	}
-
-	private fun navigateTo() = router.navigateTo(Screens.detail())
 
 	private fun onBackPressed() = router.exit()
 }

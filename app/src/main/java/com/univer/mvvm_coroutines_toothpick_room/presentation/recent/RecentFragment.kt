@@ -29,6 +29,10 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 		super.installModules(scope)
 		scope.installModules(module {
 			bind<Router>().toInstance((parentFragment as RouterProvider).router)
+			bind<RecentInteractor>().toClass<RecentInteractorImpl>()
+			bind<(String, String?) -> Unit>().toInstance { number, name ->
+				viewModel.obtainEvent(RecentEvent.OpenDetail(number, name))
+			}
 		})
 		scope.installViewModel<RecentViewModel>()
 	}

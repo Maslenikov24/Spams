@@ -1,7 +1,5 @@
 package com.univer.mvvm_coroutines_toothpick_room.data.domain.number
 
-import java.util.*
-
 data class PhoneNumber(
 	val id: String,
 	val number: String,
@@ -11,7 +9,7 @@ data class PhoneNumber(
 	val operator: String? = null,
 	val organization: String? = null,
 	val type: String? = null,
-	val danger: Int? = null,
-	val lastCallDate: Date? = null,
+	val rating: Int? = null,
+	val lastCallDate: Long? = null,
 	val countOfReport: Int? = null
 )

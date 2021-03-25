@@ -4,6 +4,6 @@ object ApiMethod {
 	const val GetServiceUrl = ""
 
 	object Number{
-		const val getNumber = ""
+		const val getNumber = "search"
 	}
 }

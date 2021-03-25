@@ -21,7 +21,7 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
     private val uiScope = CoroutineScope(Dispatchers.Main + supervisorJob)
     private val ioScope = CoroutineScope(Dispatchers.IO + supervisorJob)
     private val handler = CoroutineExceptionHandler { _, throwable ->
-        Timber.i(throwable)
+        Timber.e(throwable.localizedMessage)
     }
 
     private val _viewStates: MutableStateFlow<S?> = MutableStateFlow(null)

@@ -34,9 +34,7 @@ fun appModule(context: Context) = module {
 
     bind<SearchService>().toProvider(SearchServiceProvider::class).providesSingleton()
 
-    bind<SearchInteractor>().toClass<SearchInteractorImpl>()
     bind<SearchRepository>().toClass<SearchRepositoryImpl>()
-    bind<RecentInteractor>().toClass<RecentInteractorImpl>()
     bind<RecentRepository>().toClass<RecentRepositoryImpl>()
 
     bind<ToolbarListener>().singleton()

@@ -49,7 +49,7 @@ object Versions {
     const val adapter_delegates4 = "4.3.0"
 
     // Networking
-    const val okhttp_logging_interceptor = "3.12.0"
+    const val okhttp_logging_interceptor = "4.9.0"
     const val retrofit = "2.9.0"
     const val retrofit_coroutines = "0.9.2"
 

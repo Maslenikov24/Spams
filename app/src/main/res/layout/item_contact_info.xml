@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactLayout"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:padding="12dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="12dp">
 
     <ImageView
         android:id="@+id/contactType"
         android:layout_width="18dp"
-        android:layout_height="18dp"/>
+        android:layout_height="18dp" />
 
     <TextView
         android:id="@+id/phoneNumber"
+        style="@style/TextAppearance.Contact.Name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_weight="1"
-        style="@style/TextAppearance.Contact.Name"
         tools:text="+7(909)050-43-21" />
 
     <TextView
         android:id="@+id/contactTime"
-        tools:text="вчера"
-        android:layout_marginStart="12dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        tools:text="вчера" />
 
 </LinearLayout>

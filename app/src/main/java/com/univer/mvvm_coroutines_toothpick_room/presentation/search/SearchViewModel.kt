@@ -8,6 +8,8 @@ import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.Sear
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchViewState
 import kotlinx.coroutines.delay
+import timber.log.Timber
+import java.net.ConnectException
 import javax.inject.Inject
 
 class SearchViewModel @Inject constructor(
@@ -26,15 +28,15 @@ class SearchViewModel @Inject constructor(
 		}
 	}
 
-	private fun test(){
-		router.navigateTo(Screens.detail())
-	}
-
 	private fun getNumber(number: String){
 		io {
-			searchInteractor.getNumber(number)
-			ui{
-				getHistory()
+			try {
+				searchInteractor.getNumber("123") //TODO: for testing
+				ui {
+					getHistory()
+				}
+			} catch (e: ConnectException) {
+				Timber.e(e.localizedMessage)
 			}
 		}
 	}
@@ -42,19 +44,12 @@ class SearchViewModel @Inject constructor(
 
 //	like setHistory
 	private fun getHistory() {
-
 		io {
 			val data = searchInteractor.getHistory()
 			ui {
 				showData(data)
 			}
 		}
-
-		/*val data = mutableListOf<PhoneNumber>()
-		for (item in 1..15){
-			data.add(PhoneNumber("", "${item*11111111}", 0))
-		}
-		showData(data = data.toList())*/
 	}
 
 	private fun showData(data: List<PhoneNumber>){

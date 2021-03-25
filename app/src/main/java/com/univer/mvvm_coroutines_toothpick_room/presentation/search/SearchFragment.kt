@@ -28,6 +28,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 		super.installModules(scope)
 		scope.installModules(module {
 			bind<Router>().toInstance((parentFragment as RouterProvider).router)
+			bind<SearchInteractor>().toClass<SearchInteractorImpl>()
 		})
 		scope.installViewModel<SearchViewModel>()
 	}
