@@ -6,10 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "History")
 data class HistoryEntity(
-	@PrimaryKey
-	@ColumnInfo(name = "id")
-	var id: String,
-
 	@ColumnInfo(name = "number")
 	var number: String,
 	@ColumnInfo(name = "rating")
@@ -18,4 +14,7 @@ data class HistoryEntity(
 	var region: String?,
 	@ColumnInfo(name = "operator")
 	var operator: String?
-)
+){
+	@PrimaryKey (autoGenerate = true)
+	var id: Long = 0
+}

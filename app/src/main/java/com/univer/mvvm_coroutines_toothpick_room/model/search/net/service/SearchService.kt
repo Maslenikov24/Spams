@@ -9,8 +9,8 @@ import retrofit2.http.Query
 
 interface SearchService {
 
-	@GET(ApiMethod.Number.getNumber)
-	suspend fun getNumber(
+	@GET(ApiMethod.Number.searchNumber)
+	suspend fun searchNumber(
 		@Query("number") number : String
 	) : ApiResponse<PhoneNumberResponse>
 }

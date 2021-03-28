@@ -9,7 +9,7 @@ import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryEntity
 	entities = [
 		HistoryEntity::class
 	],
-	version = 3
+	version = 1
 )
 
 abstract class Database: RoomDatabase() {

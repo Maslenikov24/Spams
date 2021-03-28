@@ -21,7 +21,7 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
     private val uiScope = CoroutineScope(Dispatchers.Main + supervisorJob)
     private val ioScope = CoroutineScope(Dispatchers.IO + supervisorJob)
     private val handler = CoroutineExceptionHandler { _, throwable ->
-        Timber.e(throwable.localizedMessage)
+        Timber.e(throwable)
     }
 
     private val _viewStates: MutableStateFlow<S?> = MutableStateFlow(null)
@@ -63,14 +63,14 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
         ioScope.launch(handler) { block(this) }
 
     init {
-        Timber.e("viewModelLiveCircle start ${this::class.java}")
+        Timber.v("viewModelLiveCircle start ${this::class.java}")
     }
 
     override fun onCleared() {
         super.onCleared()
         supervisorJob.cancelChildren()
         subscriptions.forEach { it.cancel() }
-        Timber.e("viewModelLiveCircle onCleared ${this::class.java}")
+        Timber.v("viewModelLiveCircle onCleared ${this::class.java}")
     }
 
     fun addNavigator(navigator: Navigator) {

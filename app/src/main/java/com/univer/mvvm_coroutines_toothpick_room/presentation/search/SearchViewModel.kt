@@ -21,17 +21,17 @@ class SearchViewModel @Inject constructor(
 
 	override fun obtainEvent(viewEvent: SearchEvent) {
 		when (viewEvent){
-			is SearchEvent.SearchNumber -> getNumber(viewEvent.number)
+			is SearchEvent.SearchNumber -> searchNumber(viewEvent.number)
 			is SearchEvent.LoadHistory -> getHistory()
 			is SearchEvent.ConfirmExit -> onConfirmExit()
 			is SearchEvent.BackPressed -> onBackPressed()
 		}
 	}
 
-	private fun getNumber(number: String){
-		io {
+	private fun searchNumber(number: String){
+		ui {
 			try {
-				searchInteractor.getNumber("123") //TODO: for testing
+				searchInteractor.searchNumber(number) //TODO: for testing
 				ui {
 					getHistory()
 				}

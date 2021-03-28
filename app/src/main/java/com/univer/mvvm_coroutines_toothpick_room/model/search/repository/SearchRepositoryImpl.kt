@@ -15,10 +15,10 @@ class SearchRepositoryImpl @Inject constructor(
 	private val historyResponseToEntityMapper: HistoryResponseToEntityMapper
 ): SearchRepository {
 
-	override suspend fun getNumber(number: String) {
-		Timber.d("loading getNumber")
-		val result = searchService.getNumber(number).fetchData()
-		Timber.d("loaded getNumber successfully")
+	override suspend fun searchNumber(number: String) {
+		Timber.d("loading searchNumber")
+		val result = searchService.searchNumber(number).fetchData()
+		Timber.d("loaded searchNumber successfully")
 		Timber.d(result.toString())
 		result?.let {
 			saveToHistory(historyResponseToEntityMapper.map(result))

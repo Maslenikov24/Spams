@@ -9,7 +9,7 @@ class SearchInteractorImpl @Inject constructor(
 	private val searchRepository: SearchRepository
 ) : SearchInteractor {
 
-	override suspend fun getNumber(number: String) = searchRepository.getNumber(number)
+	override suspend fun searchNumber(number: String) = searchRepository.searchNumber(number)
 
 	override suspend fun getHistory() = searchRepository.getHistory()
 }

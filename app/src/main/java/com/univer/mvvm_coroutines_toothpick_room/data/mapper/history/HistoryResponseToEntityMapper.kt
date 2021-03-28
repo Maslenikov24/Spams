@@ -9,8 +9,7 @@ class HistoryResponseToEntityMapper @Inject constructor(
 
 ) : Mapper<PhoneNumberResponse, HistoryEntity> {
 	override fun map(from: PhoneNumberResponse) = HistoryEntity(
-		id = from.id,
-		number = from.id,
+		number = from.number,
 		rating = from.isBan,
 		region = from.region,
 		operator = from.operator

@@ -12,6 +12,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.objectScopeName
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
 import com.univer.mvvm_coroutines_toothpick_room.di.utils.ToothpickViewModelFactory
+import timber.log.Timber
 import toothpick.Scope
 import toothpick.ktp.KTP
 import toothpick.smoothie.lifecycle.closeOnDestroy
@@ -42,12 +43,15 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
 	private fun restoreScope(savedInstanceState: Bundle?){
 		fragmentScopeName = savedInstanceState?.getString(STATE_SCOPE_NAME) ?: objectScopeName()
 		scope = if (KTP.isScopeOpen(fragmentScopeName)){
+			//Timber.v("${KTP.openScope(fragmentScopeName)}")
 			KTP.openScope(fragmentScopeName)
 		} else {
 			val openScopes = KTP.openScope(parentScopeName).openSubScope(fragmentScopeName)
+			//Timber.v("${KTP.openScope(parentScopeName).openSubScope(fragmentScopeName)}")
 			installModules(openScopes)
 			openScopes
 		}.closeOnDestroy(this)
+		Timber.v("${KTP.openScope(Scopes.APP_SCOPE)}")
 		scope.inject(this)
 
 		//Toothpick.inject(this, scope)
