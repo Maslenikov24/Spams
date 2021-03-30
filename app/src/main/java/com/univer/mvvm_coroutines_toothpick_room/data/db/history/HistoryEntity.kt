@@ -10,10 +10,8 @@ data class HistoryEntity(
 	var number: String,
 	@ColumnInfo(name = "rating")
 	var rating: Int,
-	@ColumnInfo(name = "region")
-	var region: String?,
-	@ColumnInfo(name = "operator")
-	var operator: String?
+	@ColumnInfo(name = "date")
+	var date: Long
 ){
 	@PrimaryKey (autoGenerate = true)
 	var id: Long = 0

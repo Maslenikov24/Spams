@@ -3,13 +3,14 @@ package com.univer.mvvm_coroutines_toothpick_room.presentation.search
 import com.github.terrakok.cicerone.Router
 import com.univer.mvvm_coroutines_toothpick_room.core.Screens
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseViewModel
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.number.PhoneNumber
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchAction
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchViewState
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 import java.net.ConnectException
+import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 class SearchViewModel @Inject constructor(
@@ -25,55 +26,51 @@ class SearchViewModel @Inject constructor(
 			is SearchEvent.LoadHistory -> getHistory()
 			is SearchEvent.ConfirmExit -> onConfirmExit()
 			is SearchEvent.BackPressed -> onBackPressed()
+			is SearchEvent.OpenDetail -> navigateToDetail(viewEvent.number)
+			is SearchEvent.DeleteFromHistory -> deleteFromHistory(viewEvent.id)
+			is SearchEvent.DeleteAllHistory -> deleteAllHistory()
 		}
 	}
 
-	private fun searchNumber(number: String){
+	private fun searchNumber(number: String) {
 		ui {
 			try {
-				searchInteractor.searchNumber(number) //TODO: for testing
-				ui {
-					getHistory()
+				viewState = SearchViewState.LoadingNumber //TODO: viewState optimization
+				searchInteractor.searchNumber(number)
+				viewState = SearchViewState.LoadedNumber
+			} catch (e: Exception) {
+				if (e is ConnectException || e is SocketTimeoutException) {
+					viewState = SearchViewState.FailedLoad(e.message)
+					//TODO: send short error message
 				}
-			} catch (e: ConnectException) {
-				Timber.e(e.localizedMessage)
 			}
 		}
 	}
 
-
-//	like setHistory
-	private fun getHistory() {
-		io {
-			val data = searchInteractor.getHistory()
-			ui {
-				showData(data)
+	private fun getHistory(){
+		ui {
+			searchInteractor.getHistory().collect{
+				viewState = SearchViewState.ShowHistory(it)
 			}
 		}
 	}
 
-	private fun showData(data: List<PhoneNumber>){
-		viewState = SearchViewState.ShowHistory(data)
+	private fun navigateToDetail(number: String) {
+		router.navigateTo(Screens.detail(number))
+		viewAction = SearchAction.Nothing
 	}
 
-	//val data = mutableListOf<PhoneNumber>()
-
-	/*private fun getHistory(){
-		io {
-			setHistory().collect { item ->
-				data.add(0, item)
-				viewState = SearchViewState.LoadedHistory(data)
-			}
+	private fun deleteFromHistory(id: Long){
+		ui{
+			searchInteractor.deleteFromHistory(id)
 		}
 	}
 
-	private fun setHistory() = flow {
-		for (item in 15 downTo 1){
-			delay(100)
-			emit(PhoneNumber("", "${item*11111111}", 0))
+	private fun deleteAllHistory(){
+		ui{
+			searchInteractor.deleteAllHistory()
 		}
-	}*/
-
+	}
 
 	private fun onConfirmExit() {
 		ui {

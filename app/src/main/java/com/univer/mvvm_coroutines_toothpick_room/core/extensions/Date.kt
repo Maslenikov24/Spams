@@ -1,6 +1,7 @@
 package com.univer.mvvm_coroutines_toothpick_room.core.extensions
 
 import android.annotation.SuppressLint
+import timber.log.Timber
 import java.util.*
 import kotlin.math.abs
 
@@ -12,19 +13,26 @@ fun Long.toDate(): String {
 
 // TODO: refactor
 @SuppressLint("SimpleDateFormat")
-fun Long.toDateWithNormalization(): String{
-	val sdf = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm")
+fun Long.toDateWithNormalization(): String {
+	// date
+	var sdf = java.text.SimpleDateFormat("dd/MM/yyyy")
 	val dateToday = sdf.format(Date())
 	var dateOfCall = sdf.format(Date(this))
-	if (dateToday.substring(0,10) == dateOfCall.substring(0,10)){
-		if (dateToday.substring(0, 1) == dateOfCall.substring(0, 1)) dateOfCall = "Сегодня"
-		else if (abs(dateToday.substring(0, 1).toInt() - dateOfCall.substring(0, 1).toInt()) == 1)
-			dateOfCall = "Вчера"
-		//Regex("""[0-9]{2}/[0-9]{2}/[0-9]{4}"""), "Вчера")
+
+	// day
+	sdf = java.text.SimpleDateFormat("dd")
+	val dayToday = sdf.format(Date())
+	val dayOfCall = sdf.format(Date(this))
+
+	if (dateOfCall.substring(3, 10) == dateToday.substring(3, 10)) {
+		if (dayToday == dayOfCall) dateOfCall = "Сегодня"
+		else if (dayToday.toInt() - dayOfCall.toInt() == 1) dateOfCall = "Вчера"
 	}
-	else dateOfCall = dateOfCall.substring(0,10)
 	return dateOfCall
 }
 
 @SuppressLint("SimpleDateFormat")
-fun Long.toTime() = this.toDate().substring(11,16)
+fun Long.toTime(): String {
+	val sdf = java.text.SimpleDateFormat("HH:mm")
+	return sdf.format(Date(this))
+}

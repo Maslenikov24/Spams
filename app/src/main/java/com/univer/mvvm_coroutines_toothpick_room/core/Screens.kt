@@ -11,7 +11,7 @@ object Screens {
 	fun main() = FragmentScreen { MainFlowFragment() }
 	fun search() = FragmentScreen { SearchFragment() }
 	fun recent() = FragmentScreen { RecentFragment() }
-	fun detail(number: String, name: String?) = FragmentScreen {
+	fun detail(number: String, name: String? = null) = FragmentScreen {
 		DetailFragment.newInstance(RecentStartParams(number, name))
 	}
 }

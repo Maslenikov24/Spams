@@ -5,9 +5,11 @@ import android.view.View
 import com.github.terrakok.cicerone.Router
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.snack
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
+import com.univer.mvvm_coroutines_toothpick_room.core.extensions.visible
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.number.PhoneNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.domain.history.HistoryNumber
 import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentSearchBinding
+import com.univer.mvvm_coroutines_toothpick_room.di.Adapter
 import com.univer.mvvm_coroutines_toothpick_room.presentation.common.RouterProvider
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.adapter.SearchAdapter
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchAction
@@ -29,6 +31,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 		scope.installModules(module {
 			bind<Router>().toInstance((parentFragment as RouterProvider).router)
 			bind<SearchInteractor>().toClass<SearchInteractorImpl>()
+			bind<(String) -> Unit>().withName(Adapter::class).toInstance { number ->
+				viewModel.obtainEvent(SearchEvent.OpenDetail(number))
+			}
+			bind<(Long) -> Unit>().toInstance { id ->
+				viewModel.obtainEvent(SearchEvent.DeleteFromHistory(id))
+			}
 		})
 		scope.installViewModel<SearchViewModel>()
 	}
@@ -57,8 +65,25 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 
 	private fun renderViewState(viewState: SearchViewState){
 		when (viewState){
+			is SearchViewState.LoadingNumber -> {
+				showProgress(true)
+				binging.searchInputLayout.isErrorEnabled = false
+			}
 			is SearchViewState.ShowHistory -> {
 				showData(viewState.data)
+			}
+			is SearchViewState.LoadedNumber -> {
+				showProgress(false)
+				binging.searchText.text?.clear()
+				binging.recyclerView.post {
+					binging.recyclerView.smoothScrollToPosition(0)
+				}
+			}
+			is SearchViewState.FailedLoad -> {
+				showProgress(false)
+				viewState.message?.let {
+					binging.searchInputLayout.error = it
+				}
 			}
 		}
 	}
@@ -74,7 +99,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 		}
 	}
 
-	private fun showData(data: List<PhoneNumber>){
+	private fun showProgress(show: Boolean){
+		binging.progressBar.visible(show, false)
+	}
+
+	private fun showData(data: List<HistoryNumber>){
 		adapter.items = data
 		adapter.notifyDataSetChanged()
 	}

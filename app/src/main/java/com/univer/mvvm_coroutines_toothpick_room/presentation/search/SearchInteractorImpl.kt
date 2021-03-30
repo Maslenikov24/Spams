@@ -11,5 +11,9 @@ class SearchInteractorImpl @Inject constructor(
 
 	override suspend fun searchNumber(number: String) = searchRepository.searchNumber(number)
 
-	override suspend fun getHistory() = searchRepository.getHistory()
+	override fun getHistory() = searchRepository.getHistory()
+
+	override suspend fun deleteFromHistory(id: Long) = searchRepository.deleteFromHistory(id)
+
+	override suspend fun deleteAllHistory() = searchRepository.deleteAllHistory()
 }

@@ -74,7 +74,7 @@ class ContactsProviderImpl(
                 val name = cursorCalls.getString(CACHED_NAME)
                 val date = cursorCalls.getLong(DATE)
 
-                number?.let { calls.add(Contact.ContactInfo(id, number, name, null, type, date)) }
+                number?.let { calls.add(Contact.ContactInfo(id, it, name, null, type, date)) }
 
             } while (cursorCalls.moveToNext())
         }
@@ -85,7 +85,7 @@ class ContactsProviderImpl(
 
         data.forEach {
             if (it.date.toDate().substring(0,10) != date.toDate().substring(0,10)) {
-                wrappedCalls.add(Contact.ContactDate(date))
+                wrappedCalls.add(Contact.ContactDate(it.date))
                 date = it.date
             }
             wrappedCalls.add(it)

@@ -30,9 +30,9 @@ class RecentViewModel @Inject constructor(
 		router.navigateTo(Screens.detail(number, name))
 
 	private fun getRecent() {
-		io {
+		ui {
 			recentInteractor.getPhoneBook().collect {
-				ui { viewState = RecentViewState.ShowRecent(it) }
+				viewState = RecentViewState.ShowRecent(it)
 			}
 		}
 	}

@@ -13,7 +13,7 @@ class OkHttpClientProvider @Inject constructor() : Provider<OkHttpClient> {
 
 	val logger = HttpLoggingInterceptor.Logger { message -> Timber.v(message) }
 
-	val TIMEOUT = 7L
+	val TIMEOUT = 10L
 
 	private val logging = HttpLoggingInterceptor(logger).apply {
 		level = HttpLoggingInterceptor.Level.BODY

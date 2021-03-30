@@ -18,8 +18,7 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
 
     private val subscriptions = LinkedList<ReceiveChannel<*>>() //TODO: understand it
     private val supervisorJob = SupervisorJob() //TODO: understand it
-    private val uiScope = CoroutineScope(Dispatchers.Main + supervisorJob)
-    private val ioScope = CoroutineScope(Dispatchers.IO + supervisorJob)
+    private val uiScope = CoroutineScope(Dispatchers.Main.immediate + supervisorJob)
     private val handler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
     }
@@ -58,9 +57,6 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
 
     protected fun ui(block: suspend CoroutineScope.() -> Unit): Job =
         uiScope.launch(handler) { block(this) }
-
-    protected fun io(block: suspend CoroutineScope.() -> Unit): Job =
-        ioScope.launch(handler) { block(this) }
 
     init {
         Timber.v("viewModelLiveCircle start ${this::class.java}")
