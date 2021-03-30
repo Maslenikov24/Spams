@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.db.history
+package com.univer.mvvm_coroutines_toothpick_room.data.history.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

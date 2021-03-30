@@ -1,7 +1,7 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.mapper.number
+package com.univer.mvvm_coroutines_toothpick_room.data.number.mapper
 
 import com.univer.mvvm_coroutines_toothpick_room.core.Mapper
-import com.univer.mvvm_coroutines_toothpick_room.data.net.number.PhoneNumberResponse
+import com.univer.mvvm_coroutines_toothpick_room.data.number.net.PhoneNumberResponse
 
 class PhoneNumberResponseToDomainMapper : Mapper<Number, PhoneNumberResponse> {
 

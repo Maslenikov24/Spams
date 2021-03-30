@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.domain.blacklist
+package com.univer.mvvm_coroutines_toothpick_room.data.blacklist.domain
 
 data class BlackList(
 	val serverNumbers: List<Number>,

@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.net.number
+package com.univer.mvvm_coroutines_toothpick_room.data.number.net
 
 import com.squareup.moshi.Json
 import java.util.*

@@ -1,6 +1,6 @@
 package com.univer.mvvm_coroutines_toothpick_room
 
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.Contact
+import com.univer.mvvm_coroutines_toothpick_room.data.contact.domain.Contact
 
 
 interface ContactsProvider {

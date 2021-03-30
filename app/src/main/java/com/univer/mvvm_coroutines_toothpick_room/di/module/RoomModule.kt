@@ -3,7 +3,7 @@ package com.univer.mvvm_coroutines_toothpick_room.di.module
 import android.content.Context
 import androidx.room.Room
 import com.univer.mvvm_coroutines_toothpick_room.BuildConfig
-import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryDao
+import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryDao
 import com.univer.mvvm_coroutines_toothpick_room.model.common.Database
 import toothpick.ktp.binding.bind
 import toothpick.ktp.binding.module

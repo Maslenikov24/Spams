@@ -1,10 +1,8 @@
 package com.univer.mvvm_coroutines_toothpick_room.model.search.repository
 
-import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryEntity
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.history.HistoryNumber
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.number.PhoneNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryEntity
+import com.univer.mvvm_coroutines_toothpick_room.data.history.domain.HistoryNumber
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
 
 interface SearchRepository {
 	suspend fun searchNumber(number: String)

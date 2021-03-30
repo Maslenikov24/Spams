@@ -1,9 +1,8 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.mapper.history
+package com.univer.mvvm_coroutines_toothpick_room.data.history.mapper
 
 import com.univer.mvvm_coroutines_toothpick_room.core.Mapper
-import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryEntity
-import com.univer.mvvm_coroutines_toothpick_room.data.net.number.PhoneNumberResponse
-import java.text.SimpleDateFormat
+import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryEntity
+import com.univer.mvvm_coroutines_toothpick_room.data.number.net.PhoneNumberResponse
 import java.util.*
 import javax.inject.Inject
 

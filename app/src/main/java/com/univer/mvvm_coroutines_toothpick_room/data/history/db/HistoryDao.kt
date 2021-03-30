@@ -1,7 +1,6 @@
-package com.univer.mvvm_coroutines_toothpick_room.data.db.history
+package com.univer.mvvm_coroutines_toothpick_room.data.history.db
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow

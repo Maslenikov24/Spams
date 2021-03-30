@@ -1,7 +1,6 @@
 package com.univer.mvvm_coroutines_toothpick_room.presentation.search.models
 
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.history.HistoryNumber
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.number.PhoneNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.history.domain.HistoryNumber
 
 sealed class SearchViewState {
 	object LoadingNumber : SearchViewState()

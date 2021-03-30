@@ -1,10 +1,10 @@
 package com.univer.mvvm_coroutines_toothpick_room.model.search.repository
 
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.fetchData
-import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryDao
-import com.univer.mvvm_coroutines_toothpick_room.data.db.history.HistoryEntity
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.history.HistoryNumber
-import com.univer.mvvm_coroutines_toothpick_room.data.mapper.history.HistoryResponseToEntityMapper
+import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryDao
+import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryEntity
+import com.univer.mvvm_coroutines_toothpick_room.data.history.domain.HistoryNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.history.mapper.HistoryResponseToEntityMapper
 import com.univer.mvvm_coroutines_toothpick_room.di.IO
 import com.univer.mvvm_coroutines_toothpick_room.model.search.net.service.SearchService
 import kotlinx.coroutines.CoroutineDispatcher

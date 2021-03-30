@@ -5,7 +5,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.univer.mvvm_coroutines_toothpick_room.R
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toDateWithNormalization
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toTime
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.history.HistoryNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.history.domain.HistoryNumber
 import com.univer.mvvm_coroutines_toothpick_room.databinding.ItemHistoryBinding
 import com.univer.mvvm_coroutines_toothpick_room.di.Adapter
 import javax.inject.Inject

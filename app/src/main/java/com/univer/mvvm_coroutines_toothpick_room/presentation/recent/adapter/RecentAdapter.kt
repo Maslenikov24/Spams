@@ -6,7 +6,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.univer.mvvm_coroutines_toothpick_room.R
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toDateWithNormalization
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.toTime
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.contact.Contact
+import com.univer.mvvm_coroutines_toothpick_room.data.contact.domain.Contact
 import com.univer.mvvm_coroutines_toothpick_room.databinding.ItemContactDateBinding
 import com.univer.mvvm_coroutines_toothpick_room.databinding.ItemContactInfoBinding
 import javax.inject.Inject

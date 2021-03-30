@@ -7,7 +7,7 @@ import com.univer.mvvm_coroutines_toothpick_room.core.extensions.snack
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.subscribe
 import com.univer.mvvm_coroutines_toothpick_room.core.extensions.visible
 import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
-import com.univer.mvvm_coroutines_toothpick_room.data.domain.history.HistoryNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.history.domain.HistoryNumber
 import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentSearchBinding
 import com.univer.mvvm_coroutines_toothpick_room.di.Adapter
 import com.univer.mvvm_coroutines_toothpick_room.presentation.common.RouterProvider
