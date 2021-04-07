@@ -5,6 +5,8 @@ import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryDao
 import com.univer.mvvm_coroutines_toothpick_room.data.history.db.HistoryEntity
 import com.univer.mvvm_coroutines_toothpick_room.data.history.domain.HistoryNumber
 import com.univer.mvvm_coroutines_toothpick_room.data.history.mapper.HistoryResponseToEntityMapper
+import com.univer.mvvm_coroutines_toothpick_room.data.number.domain.PhoneNumber
+import com.univer.mvvm_coroutines_toothpick_room.data.number.mapper.PhoneNumberResponseToDomainMapper
 import com.univer.mvvm_coroutines_toothpick_room.di.IO
 import com.univer.mvvm_coroutines_toothpick_room.model.search.net.service.SearchService
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,17 +19,21 @@ class SearchRepositoryImpl @Inject constructor(
 	private val searchService: SearchService,
 	private val historyDao: HistoryDao, //TODO: refactor to history
 	private val historyResponseToEntityMapper: HistoryResponseToEntityMapper,
+	private val phoneNumberResponseToDomainMapper: PhoneNumberResponseToDomainMapper,
 	@IO private val ioDispatcher: CoroutineDispatcher
 ): SearchRepository {
 
-	override suspend fun searchNumber(number: String) {
+	override suspend fun searchNumber(number: String): PhoneNumber? {
+		var item: PhoneNumber? = null
 		withContext(ioDispatcher){
 			val result = searchService.searchNumber(number).fetchData()
-			Timber.d(result.toString())
+			Timber.tag("AppLog").d(result.toString())
 			result?.let {
 				saveToHistory(historyResponseToEntityMapper.map(it))
+				item = phoneNumberResponseToDomainMapper.map(result)
 			}
 		}
+		return item
 	}
 
 	override fun getHistory() : Flow<List<HistoryNumber>> =

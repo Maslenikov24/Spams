@@ -18,6 +18,7 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
         initTimber()
+        Timber.tag("AppLog").d("AppInit")
         initToothpick()
         initAppScope()
     }

@@ -77,6 +77,9 @@ dependencies {
     kapt(Libs.room_compiler)
     implementation(Libs.room)
 
+    // Datastore
+    implementation(Libs.data_store)
+
     // Lifecycle
     implementation(Libs.lifecycle_extensions)
     implementation(Libs.lifecycle_livedata)

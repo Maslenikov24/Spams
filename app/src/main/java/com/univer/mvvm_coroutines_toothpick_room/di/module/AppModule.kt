@@ -1,23 +1,18 @@
 package com.univer.mvvm_coroutines_toothpick_room.di.module
 
 import android.content.Context
-import com.univer.mvvm_coroutines_toothpick_room.core.ToolbarListener
-import com.univer.mvvm_coroutines_toothpick_room.di.ApiPath
-import com.univer.mvvm_coroutines_toothpick_room.di.Default
-import com.univer.mvvm_coroutines_toothpick_room.di.IO
-import com.univer.mvvm_coroutines_toothpick_room.di.Main
-import com.univer.mvvm_coroutines_toothpick_room.di.provider.server.ApiPathProvider
-import com.univer.mvvm_coroutines_toothpick_room.di.provider.server.MoshiProvider
-import com.univer.mvvm_coroutines_toothpick_room.di.provider.server.OkHttpClientProvider
-import com.univer.mvvm_coroutines_toothpick_room.di.provider.server.RetrofitProvider
+import com.univer.mvvm_coroutines_toothpick_room.model.preferences.app.AppPreferenceStorage
+import com.univer.mvvm_coroutines_toothpick_room.model.preferences.app.AppPreferenceStorageImpl
+import com.univer.mvvm_coroutines_toothpick_room.di.*
+import com.univer.mvvm_coroutines_toothpick_room.di.provider.server.*
 import com.univer.mvvm_coroutines_toothpick_room.di.provider.service.SearchServiceProvider
+import com.univer.mvvm_coroutines_toothpick_room.model.preferences.call.CallPreferenceStorage
+import com.univer.mvvm_coroutines_toothpick_room.model.preferences.call.CallPreferenceStorageImpl
 import com.univer.mvvm_coroutines_toothpick_room.model.recent.repository.RecentRepository
 import com.univer.mvvm_coroutines_toothpick_room.model.recent.repository.RecentRepositoryImpl
 import com.univer.mvvm_coroutines_toothpick_room.model.search.net.service.SearchService
 import com.univer.mvvm_coroutines_toothpick_room.model.search.repository.SearchRepository
 import com.univer.mvvm_coroutines_toothpick_room.model.search.repository.SearchRepositoryImpl
-import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.RecentInteractor
-import com.univer.mvvm_coroutines_toothpick_room.presentation.recent.RecentInteractorImpl
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.SearchInteractor
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.SearchInteractorImpl
 import kotlinx.coroutines.CoroutineDispatcher
@@ -30,21 +25,26 @@ import toothpick.ktp.binding.module
 
 fun appModule(context: Context) = module {
     bind<Context>().toInstance(context)
-    //bind<ContactsProvider>().toClass<ContactsProviderImpl>()
 
+    // Coroutines
     bind<CoroutineDispatcher>().withName(IO::class).toInstance(Dispatchers.IO)
     bind<CoroutineDispatcher>().withName(Main::class).toInstance(Dispatchers.Main.immediate)
     bind<CoroutineDispatcher>().withName(Default::class).toInstance(Dispatchers.Default)
 
+    // Provider.server
     bind<Retrofit>().toProvider(RetrofitProvider::class).providesSingleton()
     bind<OkHttpClient>().toProviderInstance(OkHttpClientProvider()).providesSingleton()
     bind<MoshiConverterFactory>().toProviderInstance(MoshiProvider()).providesSingleton()
     bind<String>().withName(ApiPath::class).toProviderInstance(ApiPathProvider()).providesSingleton()
+    bind<AppPreferenceStorage>().toClass<AppPreferenceStorageImpl>().singleton()
+    bind<CallPreferenceStorage>().toClass<CallPreferenceStorageImpl>().singleton()
 
+    // Provider.service
     bind<SearchService>().toProvider(SearchServiceProvider::class).providesSingleton()
 
+    // Model
+    bind<SearchInteractor>().toClass<SearchInteractorImpl>()
     bind<SearchRepository>().toClass<SearchRepositoryImpl>()
     bind<RecentRepository>().toClass<RecentRepositoryImpl>()
 
-    bind<ToolbarListener>().singleton()
 }

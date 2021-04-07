@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room
+package com.univer.mvvm_coroutines_toothpick_room.di.provider
 
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -12,7 +12,7 @@ class ErrorResponseInterceptor: Interceptor {
 		val code = response.code
 
 		if (code in 400..500) {
-			Timber.e("Server error is $code")
+			Timber.tag("AppLog").e("Server error is $code")
 			//throw ServerError(code)
 		}
 

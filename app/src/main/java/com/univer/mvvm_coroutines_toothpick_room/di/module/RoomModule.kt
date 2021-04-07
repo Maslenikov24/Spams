@@ -20,5 +20,7 @@ fun roomModule(context: Context) = module {
 		}.build()
 
 	bind<Database>().toInstance(db)
+
+	// Dao
 	bind<HistoryDao>().toInstance(db.phoneNumberDao())
 }

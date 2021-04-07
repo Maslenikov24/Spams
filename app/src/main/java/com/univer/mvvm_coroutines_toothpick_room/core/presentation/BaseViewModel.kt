@@ -20,7 +20,7 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
     private val supervisorJob = SupervisorJob() //TODO: understand it
     private val uiScope = CoroutineScope(Dispatchers.Main.immediate + supervisorJob)
     private val handler = CoroutineExceptionHandler { _, throwable ->
-        Timber.e(throwable)
+        Timber.tag("AppLog").e(throwable)
     }
 
     private val _viewStates: MutableStateFlow<S?> = MutableStateFlow(null)
@@ -45,7 +45,6 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
         get() = _viewActions.value
             ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
         set(value) {
-            //_viewAction = value
             if (_viewActions.value == value) {
                 _viewActions.value = null
             }
@@ -59,14 +58,14 @@ abstract class BaseViewModel<S, A, E>(private val navigatorHolder: NavigatorHold
         uiScope.launch(handler) { block(this) }
 
     init {
-        Timber.v("viewModelLiveCircle start ${this::class.java}")
+        Timber.tag("AppLog").v("viewModelLiveCircle start ${this::class.java}")
     }
 
     override fun onCleared() {
         super.onCleared()
         supervisorJob.cancelChildren()
         subscriptions.forEach { it.cancel() }
-        Timber.v("viewModelLiveCircle onCleared ${this::class.java}")
+        Timber.tag("AppLog").v("viewModelLiveCircle onCleared ${this::class.java}")
     }
 
     fun addNavigator(navigator: Navigator) {

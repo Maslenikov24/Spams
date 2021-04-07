@@ -1,7 +1,10 @@
 package com.univer.mvvm_coroutines_toothpick_room.entry
 
+import android.app.role.RoleManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
@@ -15,12 +18,17 @@ import com.univer.mvvm_coroutines_toothpick_room.core.presentation.BaseFragment
 import com.univer.mvvm_coroutines_toothpick_room.entry.models.AppAction
 import com.univer.mvvm_coroutines_toothpick_room.entry.models.AppEvent
 import com.univer.mvvm_coroutines_toothpick_room.entry.models.AppViewState
-import toothpick.Toothpick
+import com.univer.mvvm_coroutines_toothpick_room.model.preferences.app.UiMode
+import timber.log.Timber
+import toothpick.ktp.KTP
 import toothpick.ktp.delegate.inject
 import toothpick.smoothie.lifecycle.closeOnDestroy
 import toothpick.smoothie.viewmodel.installViewModelBinding
 
+@RequiresApi(Build.VERSION_CODES.Q)
 class AppActivity : AppCompatActivity(R.layout.activity_main) {
+
+    private val roleManager by lazy { getSystemService(RoleManager::class.java) }
 
     private val viewModel by inject<AppViewModel>()
 
@@ -35,19 +43,36 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initAppScope()
+        Timber.tag("AppLog").d("Activity onCreate()")
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        subscribe(viewModel.viewStates(), ::renderViewState)
-        subscribe(viewModel.viewActions(), ::renderAction)
+        Timber.tag("AppLog").d(savedInstanceState.toString())
 
-        if (savedInstanceState == null){
-            viewModel.obtainEvent(AppEvent.AppFirstStartEvent)
+        if (savedInstanceState == null) {
+            subscribe(viewModel.viewStates(), ::renderViewState)
+            subscribe(viewModel.viewActions(), ::renderAction)
+
+            viewModel.obtainEvent(AppEvent.FirstStart)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                initService()
+            }
         }
 
     }
 
+    private fun setUiMode(uiMode: UiMode){
+        when (uiMode){
+            UiMode.DAY -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            UiMode.NIGHT -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
+    }
+
     private fun initAppScope(){
-        Toothpick.openScope(Scopes.APP_SCOPE)
+        KTP.openScope(Scopes.APP_SCOPE)
             .openSubScope(Scopes.ACTIVITY_SCOPE){
                 it.installViewModelBinding<AppViewModel>(
                     this,
@@ -57,23 +82,20 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
             .inject(this)
     }
 
-    private fun renderViewState(appViewState: AppViewState){
-        when (appViewState){
-            is AppViewState.AppErrorState -> {
+    private fun renderViewState(viewState: AppViewState){
+        when (viewState){
+            is AppViewState.FirstStart -> {
                 /* nothing */
             }
-            is AppViewState.AppFirstStartState -> {
-                /* nothing */
-            }
-            is AppViewState.TestState -> {
-                /* nothing */
+            is AppViewState.SetUiMode -> {
+                setUiMode(viewState.uiMode)
             }
         }
     }
 
-    private fun renderAction(appAction: AppAction){
-        when (appAction){
-            is AppAction.AppLogAction -> {
+    private fun renderAction(viewAction: AppAction){
+        when (viewAction){
+            is AppAction.Log -> {
                 toast("Success")
             }
         }
@@ -91,5 +113,24 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onBackPressed() {
         currentFragment?.onBackPressed() ?: super.onBackPressed()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    fun initService(){
+        when {
+            roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING) ->
+                Timber.tag("AppLog").d("got role")
+            roleManager.isRoleAvailable(RoleManager.ROLE_CALL_SCREENING) -> {
+                Timber.tag("AppLog").d("cannot hold role")
+                startActivityForResult(
+                    roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING),
+                    REQUEST_CALLER_ID_APP
+                )
+            }
+        }
+    }
+
+    companion object {
+        private const val REQUEST_CALLER_ID_APP = 1
     }
 }

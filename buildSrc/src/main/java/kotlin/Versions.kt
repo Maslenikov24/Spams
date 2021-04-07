@@ -42,6 +42,9 @@ object Versions {
     // Room
     const val room = "2.2.6"
 
+    // DataStore
+    const val data_store = "1.0.0-alpha08"
+
     // Lifecycle
     const val lifecycle = "2.2.0"
 

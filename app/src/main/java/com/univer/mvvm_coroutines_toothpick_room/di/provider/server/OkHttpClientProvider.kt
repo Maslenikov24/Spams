@@ -1,7 +1,6 @@
 package com.univer.mvvm_coroutines_toothpick_room.di.provider.server
 
-import com.github.stephanenicolas.toothpick.smoothie_lifecycle_ktp.BuildConfig
-import com.univer.mvvm_coroutines_toothpick_room.ErrorResponseInterceptor
+import com.univer.mvvm_coroutines_toothpick_room.di.provider.ErrorResponseInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
@@ -11,9 +10,9 @@ import javax.inject.Provider
 
 class OkHttpClientProvider @Inject constructor() : Provider<OkHttpClient> {
 
-	val logger = HttpLoggingInterceptor.Logger { message -> Timber.v(message) }
+	private val logger = HttpLoggingInterceptor.Logger { message -> Timber.tag("AppLog").v(message) }
 
-	val TIMEOUT = 10L
+	private val TIMEOUT = 10L
 
 	private val logging = HttpLoggingInterceptor(logger).apply {
 		level = HttpLoggingInterceptor.Level.BODY

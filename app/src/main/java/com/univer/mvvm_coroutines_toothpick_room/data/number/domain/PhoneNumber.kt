@@ -3,7 +3,6 @@ package com.univer.mvvm_coroutines_toothpick_room.data.number.domain
 data class PhoneNumber(
 	val id: String,
 	val number: String,
-	val isBan: Int,
 	val country: String? = null,
 	val region: String? = null,
 	val operator: String? = null,

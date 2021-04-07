@@ -18,12 +18,12 @@
 
     <style name="TextAppearance.Contact.Name" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/contactName</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
     <style name="TextAppearance.History.Number" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/contactName</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
 </resources>
