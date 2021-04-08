@@ -14,9 +14,9 @@
     <color name="grayF7">#F7F7F7</color>
 
     <color name="missedCall">#F44336</color>
-    <color name="incomingCall">#4CAF50</color>
-    <color name="outgoingCall">#FF9800</color>
-    <color name="canceledCall">#009688</color>
+    <color name="incomingCall">@color/grayA5</color>
+    <color name="outgoingCall">#4CAF50</color>
+    <color name="canceledCall">#0080EF</color>
     <color name="dividerColor">@color/grayF7</color>
 
     <color name="contactName">@color/black</color>

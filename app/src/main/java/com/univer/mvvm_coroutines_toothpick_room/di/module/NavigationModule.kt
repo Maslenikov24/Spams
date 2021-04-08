@@ -1,6 +1,5 @@
 package com.univer.mvvm_coroutines_toothpick_room.di.module
 
-import android.content.Context
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router

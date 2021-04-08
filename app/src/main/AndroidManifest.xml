@@ -29,7 +29,7 @@
         </activity>
         
         <service
-            android:name=".model.call.InCallServiceImpl"
+            android:name=".model.call.service.InCallServiceImpl"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_INCALL_SERVICE">
@@ -42,7 +42,7 @@
         </service>
 
         <service
-            android:name=".model.call.CallScreeningServiceImpl"
+            android:name=".model.call.service.CallScreeningServiceImpl"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_SCREENING_SERVICE">

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance" parent="AppTheme"/>
+    <style name="TextAppearance" parent="AppTheme">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
 
     <style name="TextAppearance.Regular" parent="TextAppearance">
         <item name="android:fontFamily">@font/font_regular</item>
@@ -15,15 +17,16 @@
         <item name="android:fontFamily">@font/font_bold</item>
     </style>
 
-
     <style name="TextAppearance.Contact.Name" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
     <style name="TextAppearance.History.Number" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Manage.UID" parent="TextAppearance.Regular">
+        <item name="android:textSize">24sp</item>
     </style>
 
 </resources>

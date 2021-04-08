@@ -10,6 +10,7 @@ import com.univer.mvvm_coroutines_toothpick_room.databinding.FragmentMainFlowBin
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowAction
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowEvent
 import com.univer.mvvm_coroutines_toothpick_room.presentation.main.models.MainFlowViewState
+import kotlinx.android.synthetic.main.fragment_main_flow.*
 import toothpick.Scope
 import toothpick.ktp.delegate.inject
 
@@ -35,6 +36,13 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 		selectTab(currentFragment?.tag?: TAB_SEARCH)
 		subscribe(viewModel.viewStates(), ::renderViewState)
 		subscribe(viewModel.viewActions(), ::renderActions)
+
+		binging.toolbar.apply {
+			setNavigationIcon(R.drawable.ic_manage)
+			setNavigationOnClickListener {
+				viewModel.obtainEvent(MainFlowEvent.OpenControl)
+			}
+		}
 	}
 
 	override fun renderViewState(viewState: MainFlowViewState) {

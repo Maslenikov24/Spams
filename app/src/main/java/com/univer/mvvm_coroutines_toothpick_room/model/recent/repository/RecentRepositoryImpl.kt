@@ -1,7 +1,7 @@
 package com.univer.mvvm_coroutines_toothpick_room.model.recent.repository
 
 import android.content.Context
-import com.univer.mvvm_coroutines_toothpick_room.model.call.ContactsProviderImpl
+import com.univer.mvvm_coroutines_toothpick_room.model.call.provider.ContactsProviderImpl
 import com.univer.mvvm_coroutines_toothpick_room.di.IO
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow

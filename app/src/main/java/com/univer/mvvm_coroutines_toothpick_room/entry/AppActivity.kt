@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
-import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.univer.mvvm_coroutines_toothpick_room.core.AppNavigator
 import com.univer.mvvm_coroutines_toothpick_room.R
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
 import com.univer.mvvm_coroutines_toothpick_room.di.utils.ToothpickViewModelFactory

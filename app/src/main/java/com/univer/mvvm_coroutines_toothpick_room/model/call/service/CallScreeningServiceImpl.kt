@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room.model.call
+package com.univer.mvvm_coroutines_toothpick_room.model.call.service
 
 import android.content.Intent
 import android.os.Build
@@ -6,14 +6,11 @@ import android.os.IBinder
 import android.telecom.Call
 import android.telecom.CallScreeningService
 import androidx.annotation.RequiresApi
-import com.univer.mvvm_coroutines_toothpick_room.core.extensions.collectAsState
 import com.univer.mvvm_coroutines_toothpick_room.di.Scopes
 import com.univer.mvvm_coroutines_toothpick_room.model.preferences.call.CallPreferenceStorage
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.SearchInteractor
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 import toothpick.ktp.KTP
 import toothpick.ktp.delegate.inject

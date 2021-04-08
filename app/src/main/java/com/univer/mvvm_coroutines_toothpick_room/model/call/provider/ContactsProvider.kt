@@ -1,4 +1,4 @@
-package com.univer.mvvm_coroutines_toothpick_room.model.call
+package com.univer.mvvm_coroutines_toothpick_room.model.call.provider
 
 import com.univer.mvvm_coroutines_toothpick_room.data.contact.domain.Contact
 

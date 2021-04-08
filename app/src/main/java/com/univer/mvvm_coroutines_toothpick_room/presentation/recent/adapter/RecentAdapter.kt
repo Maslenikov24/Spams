@@ -44,16 +44,16 @@ fun contactInfoAdapterDelegate(detailClickListener: (String, String?) -> Unit) =
 				}
 				when (item.type) {
 					CallLog.Calls.INCOMING_TYPE -> {
-						contactType.setImageResource(R.drawable.ic_incoming)
+						contactType.setImageResource(R.drawable.ic_call_incoming)
 					}
 					CallLog.Calls.OUTGOING_TYPE -> {
-						contactType.setImageResource(R.drawable.ic_outgoing)
+						contactType.setImageResource(R.drawable.ic_call_outgoing)
 					}
 					CallLog.Calls.MISSED_TYPE -> {
-						contactType.setImageResource(R.drawable.ic_missed)
+						contactType.setImageResource(R.drawable.ic_call_missed)
 					}
 					CallLog.Calls.REJECTED_TYPE -> {
-						contactType.setImageResource(R.drawable.ic_canceled)
+						contactType.setImageResource(R.drawable.ic_call_canceled)
 					}
 					CallLog.Calls.ANSWERED_EXTERNALLY_TYPE -> { /*nothing*/
 					}
