@@ -26,7 +26,12 @@
     </style>
 
     <style name="TextAppearance.Manage.UID" parent="TextAppearance.Regular">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Manage.CountOfChildren" parent="TextAppearance.Regular">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>

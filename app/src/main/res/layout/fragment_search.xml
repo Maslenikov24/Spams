@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
-            android:background="@color/grayF7"
+            android:background="@color/lightGray"
             android:text="История поиска" />
 
         <androidx.recyclerview.widget.RecyclerView

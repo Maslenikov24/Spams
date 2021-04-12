@@ -8,7 +8,6 @@ import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.Sear
 import com.univer.mvvm_coroutines_toothpick_room.presentation.search.models.SearchViewState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
-import timber.log.Timber
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -35,9 +34,9 @@ class SearchViewModel @Inject constructor(
 	private fun searchNumber(number: String) {
 		ui {
 			try {
-				viewState = SearchViewState.LoadingNumber //TODO: viewState optimization
+				viewState = SearchViewState.StartLoadingNumber
 				searchInteractor.searchNumber(number)
-				viewState = SearchViewState.LoadedNumber
+				viewState = SearchViewState.FinishedLoadingNumber
 			} catch (e: Exception) {
 				if (e is ConnectException || e is SocketTimeoutException) {
 					viewState = SearchViewState.FailedLoad(e.message)

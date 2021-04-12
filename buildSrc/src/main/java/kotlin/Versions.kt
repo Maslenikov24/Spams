@@ -20,7 +20,7 @@ object Versions {
     const val android_paging_ktx = "2.1.2"
 
     // View Binding
-    const val view_binding = "1.4.1"
+    const val view_binding = "1.4.5"
 
     // Coil
     const val coil = "1.1.1"

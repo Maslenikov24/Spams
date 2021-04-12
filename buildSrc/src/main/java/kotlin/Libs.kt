@@ -13,7 +13,7 @@ object Libs {
     const val androidx_constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidx_constraint_layout}"
 
     // ViewBinding
-    const val view_binding = "com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:${Versions.view_binding}"
+    const val view_binding = "com.github.kirich1409:viewbindingpropertydelegate:${Versions.view_binding}"
 
     // Coil
     const val coil = "io.coil-kt:coil:${Versions.coil}"

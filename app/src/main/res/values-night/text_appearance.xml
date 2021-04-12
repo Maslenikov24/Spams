@@ -5,28 +5,9 @@
         <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
-    <style name="TextAppearance.Regular" parent="TextAppearance">
-        <item name="android:fontFamily">@font/font_regular</item>
-    </style>
-
-    <style name="TextAppearance.Medium" parent="TextAppearance">
-        <item name="android:fontFamily">@font/font_medium</item>
-    </style>
-
-    <style name="TextAppearance.Bold" parent="TextAppearance">
-        <item name="android:fontFamily">@font/font_bold</item>
-    </style>
-
-    <style name="TextAppearance.Contact.Name" parent="TextAppearance.Regular">
+    <style name="TextAppearance.Manage.CountOfChildren" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="TextAppearance.History.Number" parent="TextAppearance.Regular">
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="TextAppearance.Manage.UID" parent="TextAppearance.Regular">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>

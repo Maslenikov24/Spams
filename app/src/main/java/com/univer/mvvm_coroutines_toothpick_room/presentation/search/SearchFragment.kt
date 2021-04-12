@@ -65,14 +65,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 
 	private fun renderViewState(viewState: SearchViewState){
 		when (viewState){
-			is SearchViewState.LoadingNumber -> {
+			is SearchViewState.StartLoadingNumber -> {
 				showProgress(true)
 				binging.searchInputLayout.isErrorEnabled = false
 			}
 			is SearchViewState.ShowHistory -> {
 				showData(viewState.data)
 			}
-			is SearchViewState.LoadedNumber -> {
+			is SearchViewState.FinishedLoadingNumber -> {
 				showProgress(false)
 				binging.searchText.text?.clear()
 				binging.recyclerView.post {

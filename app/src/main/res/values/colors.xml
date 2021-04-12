@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>
-    <color name="grayA5">#A5A5A5</color>
-    <color name="grayB5">#B5B5B5</color>
-    <color name="grayCC">#CCCCCC</color>
-    <color name="grayD8">#D8D8D8</color>
-    <color name="grayE0">#E0E0E0</color>
-    <color name="grayF7">#F7F7F7</color>
+    <color name="darkGray">#A5A5A5</color>
+    <color name="middleGray">#E0E0E0</color>
+    <color name="lightGray">#F7F7F7</color>
 
     <color name="missedCall">#F44336</color>
-    <color name="incomingCall">@color/grayA5</color>
+    <color name="incomingCall">@color/darkGray</color>
     <color name="outgoingCall">#4CAF50</color>
     <color name="canceledCall">#0080EF</color>
-    <color name="dividerColor">@color/grayF7</color>
+    <color name="dividerColor">@color/lightGray</color>
 
     <color name="contactName">@color/black</color>
 </resources>

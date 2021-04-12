@@ -69,11 +69,11 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 			setOnNavigationItemSelectedListener {
 				when (it.itemId){
 					R.id.search -> {
-						binging.toolbar.title = "Поиск номера"
+						binging.toolbar.title = context.getString(R.string.search_title)
 						selectTab(TAB_SEARCH)
 					}
 					R.id.recent -> {
-						binging.toolbar.title = "Список звонков"
+						binging.toolbar.title = context.getString(R.string.recent_title)
 						selectTab(TAB_RECENT)
 					}
 				}
