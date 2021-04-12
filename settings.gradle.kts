@@ -1,2 +1,2 @@
-rootProject.name = "Mvvm_coroutines_toothpick_room"
+rootProject.name = "Spams"
 include(":app")

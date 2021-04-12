@@ -17,7 +17,7 @@ android {
     buildToolsVersion("29.0.2")
 
     defaultConfig {
-        applicationId = "com.univer.mvvm_coroutines_toothpick_room"
+        applicationId = "com.graduate.spams"
         minSdkVersion(23)
         targetSdkVersion(29)
         versionCode = 1
