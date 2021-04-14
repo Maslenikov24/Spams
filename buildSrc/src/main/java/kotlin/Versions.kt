@@ -2,7 +2,8 @@ object Versions {
 
     //Plugins
     const val android_gradle_plugin = "4.0.0"
-    const val kotlin_version = "1.3.72"
+    const val kotlin_version = "1.4.30"
+    const val google_services = "4.3.5"
     const val plugins_android_junit5 = "1.5.2.0"
 
     //AndroidX

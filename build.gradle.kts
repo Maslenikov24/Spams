@@ -3,26 +3,24 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven("http://repository.jetbrains.com/all")
+        maven("https://maven.fabric.io/public")
+        maven("https://www.jitpack.io")
         
     }
     dependencies {
         classpath(Libs.android_gradle_plugin)
         classpath(Libs.kotlin_gradle_plugin)
-        "classpath"("com.android.tools.build:gradle:4.0.0")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
-        classpath ("com.google.gms:google-services:4.3.5")
-
-		// NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath (Libs.google_services)
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter() //TODO: go to maven
-        
+        mavenCentral()
+        maven("http://repository.jetbrains.com/all")
     }
 }
 
