@@ -21,7 +21,7 @@ class CallPreferenceStorageImpl @Inject constructor(
 	fun getValue(key: Preferences.Key<Boolean>, defaultValue: Boolean) = dataStore.data
 		.map {
 			it[key] ?: false
-		}.collectAsState(defaultValue)
+		}.collectAsState(defaultValue) ?: false
 
 	override suspend fun setValue(key: Preferences.Key<Boolean>, value: Boolean) = dataStore
 		.edit {

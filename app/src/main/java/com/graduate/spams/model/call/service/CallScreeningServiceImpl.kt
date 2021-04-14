@@ -38,7 +38,7 @@ class CallScreeningServiceImpl : CallScreeningService() {
 		super.onDestroy()
 		supervisorJob.cancelChildren()
 		subscriptions.forEach { it.cancel() }
-		Timber.tag("AppLog").v("viewModelLiveCircle onDestroy ${this::class.java}")
+		Timber.tag("AppLog").v("screenServiceLiveCircle onDestroy ${this::class.java}")
 	}
 
 	override fun onBind(intent: Intent?): IBinder? {
@@ -48,7 +48,7 @@ class CallScreeningServiceImpl : CallScreeningService() {
 
 	private fun initAppScope(){
 		KTP.openScope(Scopes.APP_SCOPE)
-			.openSubScope(Scopes.SCREENING_SERVICE_SCOPE)
+			.openSubScope(Scopes.CALL_SCREENING_SERVICE_SCOPE)
 			.inject(this)
 	}
 

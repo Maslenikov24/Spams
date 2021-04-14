@@ -5,7 +5,13 @@ import com.graduate.spams.model.preferences.app.AppPreferenceStorage
 import com.graduate.spams.model.preferences.app.AppPreferenceStorageImpl
 import com.graduate.spams.di.*
 import com.graduate.spams.di.provider.server.*
+import com.graduate.spams.di.provider.service.AuthServiceProvider
 import com.graduate.spams.di.provider.service.SearchServiceProvider
+import com.graduate.spams.model.auth.net.service.AuthService
+import com.graduate.spams.model.manage.ManageRepository
+import com.graduate.spams.model.manage.ManageRepositoryImpl
+import com.graduate.spams.model.notification.NotificationRepository
+import com.graduate.spams.model.notification.NotificationRepositoryImpl
 import com.graduate.spams.model.preferences.call.CallPreferenceStorage
 import com.graduate.spams.model.preferences.call.CallPreferenceStorageImpl
 import com.graduate.spams.model.recent.repository.RecentRepository
@@ -40,11 +46,16 @@ fun appModule(context: Context) = module {
     bind<CallPreferenceStorage>().toClass<CallPreferenceStorageImpl>().singleton()
 
     // Provider.service
+    bind<AuthService>().toProvider(AuthServiceProvider::class).providesSingleton()
     bind<SearchService>().toProvider(SearchServiceProvider::class).providesSingleton()
 
     // Model
     bind<SearchInteractor>().toClass<SearchInteractorImpl>()
     bind<SearchRepository>().toClass<SearchRepositoryImpl>()
     bind<RecentRepository>().toClass<RecentRepositoryImpl>()
+    bind<ManageRepository>().toClass<ManageRepositoryImpl>()
+    bind<NotificationRepository>().toClass<NotificationRepositoryImpl>()
+
+    bind<String>().withName(MacAddress::class).toProvider(MacAddressProvider::class).providesSingleton()
 
 }

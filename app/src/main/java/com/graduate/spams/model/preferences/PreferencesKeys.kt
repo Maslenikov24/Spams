@@ -1,11 +1,14 @@
 package com.graduate.spams.model.preferences
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 
 object PreferencesKeys {
 
 	object App {
 		val IS_DARK_MODE = booleanPreferencesKey("dark_mode")
+		val TOKEN = stringPreferencesKey("token")
+		val UID = stringPreferencesKey("uid")
 	}
 
 	object Call {

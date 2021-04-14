@@ -9,8 +9,15 @@ import com.graduate.spams.presentation.main.models.MainFlowViewState
 import javax.inject.Inject
 
 class MainFlowViewModel @Inject constructor(
-	private val router: Router
+	private val router: Router,
+	private val mainFlowInteractor: MainFlowInteractor
 ): BaseViewModel<MainFlowViewState, MainFlowAction, MainFlowEvent>() {
+
+	init {
+		ui {
+			mainFlowInteractor.initToken()
+		}
+	}
 
 	override fun obtainEvent(viewEvent: MainFlowEvent) {
 		when (viewEvent){

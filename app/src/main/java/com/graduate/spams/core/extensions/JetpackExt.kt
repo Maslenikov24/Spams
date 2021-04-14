@@ -19,8 +19,8 @@ fun <T: Any?, SF: StateFlow<T?>> AppCompatActivity.subscribe(stateFlow: SF, bloc
         stateFlow.filterNotNull().collect { block(it) }
     }
 
-fun<T> Flow<T>.collectAsState(defaultValue: T): T {
-    var result: T = defaultValue
+fun<T> Flow<T>.collectAsState(defaultValue: T): T? {
+    var result: T? = defaultValue
     CoroutineScope(Dispatchers.IO).launch {
         this@collectAsState.collect {
             result = it

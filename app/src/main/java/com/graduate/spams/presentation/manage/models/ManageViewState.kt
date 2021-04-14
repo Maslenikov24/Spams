@@ -1,4 +1,5 @@
 package com.graduate.spams.presentation.manage.models
 
-class ManageViewState {
+sealed class ManageViewState {
+	class ShowUid(val uid: String): ManageViewState()
 }

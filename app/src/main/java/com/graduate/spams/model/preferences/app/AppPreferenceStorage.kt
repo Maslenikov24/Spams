@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface AppPreferenceStorage {
 	val uiMode: Flow<UiMode>
-	suspend fun setValue(key: Preferences.Key<Boolean>, value: Boolean): Preferences
+	val token: String?
+	val uid: Flow<String>
+	suspend fun<T> setValue(key: Preferences.Key<T>, value: T): Preferences
 	suspend fun clearPreferenceStorage()
 }

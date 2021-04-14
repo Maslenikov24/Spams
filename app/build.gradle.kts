@@ -10,6 +10,7 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("kotlin-android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -115,4 +116,11 @@ dependencies {
     testImplementation(Libs.junit_test)
     androidTestImplementation(Libs.androidx_test_junit)
     androidTestImplementation(Libs.androidx_test_espresso)
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:27.0.0"))
+
+    // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
+    implementation("com.google.firebase:firebase-messaging-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
 }

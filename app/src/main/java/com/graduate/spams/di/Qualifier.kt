@@ -16,3 +16,6 @@ annotation class Default
 
 @Qualifier
 annotation class Adapter
+
+@Qualifier
+annotation class MacAddress

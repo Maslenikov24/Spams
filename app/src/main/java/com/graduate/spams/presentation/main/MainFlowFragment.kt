@@ -12,6 +12,8 @@ import com.graduate.spams.presentation.main.models.MainFlowEvent
 import com.graduate.spams.presentation.main.models.MainFlowViewState
 import kotlinx.android.synthetic.main.fragment_main_flow.*
 import toothpick.Scope
+import toothpick.ktp.binding.bind
+import toothpick.ktp.binding.module
 import toothpick.ktp.delegate.inject
 
 class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
@@ -27,6 +29,9 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 
 	override fun installModules(scope: Scope) {
 		super.installModules(scope)
+		scope.installModules( module {
+			bind<MainFlowInteractor>().toClass<MainFlowInteractorImpl>()
+		})
 		scope.installViewModel<MainFlowViewModel>()
 	}
 
