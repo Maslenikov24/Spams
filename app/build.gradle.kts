@@ -7,9 +7,7 @@ import org.gradle.kotlin.dsl.setValue
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
-    id("kotlin-android")
     id("com.google.gms.google-services")
 }
 
@@ -118,9 +116,12 @@ dependencies {
     androidTestImplementation(Libs.androidx_test_espresso)
 
     // Import the BoM for the Firebase platform
-    implementation(platform("com.google.firebase:firebase-bom:27.0.0"))
+    implementation(platform(Libs.firebase_bom))
 
     // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
-    implementation("com.google.firebase:firebase-messaging-ktx")
-    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation(Libs.firebase_messaging)
+    implementation(Libs.firebase_analytics)
+
+    // Lottie
+    implementation(Libs.lottie)
 }

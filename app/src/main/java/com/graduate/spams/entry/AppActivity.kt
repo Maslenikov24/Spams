@@ -1,9 +1,12 @@
 package com.graduate.spams.entry
 
 import android.app.role.RoleManager
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.terrakok.cicerone.Command
@@ -46,7 +49,8 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
         Timber.tag("AppLog").d("Activity onCreate()")
         super.onCreate(savedInstanceState)
         Timber.tag("AppLog").d(savedInstanceState.toString())
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         if (savedInstanceState == null) {
             subscribe(viewModel.viewStates(), ::renderViewState)
             subscribe(viewModel.viewActions(), ::renderAction)
@@ -115,6 +119,10 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
         currentFragment?.onBackPressed() ?: super.onBackPressed()
     }
 
+    private val customContract = registerForActivityResult(Contract()){ result ->
+
+    }
+
     @RequiresApi(Build.VERSION_CODES.Q)
     fun initService(){
         when {
@@ -122,13 +130,22 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
                 Timber.tag("AppLog").d("got role")
             roleManager.isRoleAvailable(RoleManager.ROLE_CALL_SCREENING) -> {
                 Timber.tag("AppLog").d("cannot hold role")
-                startActivityForResult(
-                    roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING),
-                    REQUEST_CALLER_ID_APP
-                )
+                customContract.launch(REQUEST_CALLER_ID_APP)
             }
         }
     }
+
+    inner class Contract : ActivityResultContract<Int, TransactionResult>(){
+        override fun createIntent(context: Context, input: Int?): Intent =
+            roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
+
+        override fun parseResult(resultCode: Int, intent: Intent?) = TransactionResult(
+            success = resultCode == REQUEST_CALLER_ID_APP
+        )
+
+    }
+
+    data class TransactionResult(val success: Boolean)
 
     companion object {
         private const val REQUEST_CALLER_ID_APP = 1

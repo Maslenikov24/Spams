@@ -1,6 +1,7 @@
 package com.graduate.spams.presentation.search
 
 import com.github.terrakok.cicerone.Router
+import com.graduate.spams.BuildConfig
 import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
 import com.graduate.spams.presentation.search.models.SearchAction
@@ -39,7 +40,8 @@ class SearchViewModel @Inject constructor(
 				viewState = SearchViewState.FinishedLoadingNumber
 			} catch (e: Exception) {
 				if (e is ConnectException || e is SocketTimeoutException) {
-					viewState = SearchViewState.FailedLoad(e.message)
+					if (BuildConfig.DEBUG) viewState = SearchViewState.FailedLoad(e.message)
+					else viewState = SearchViewState.FailedLoad("Неполадки с интернет-соединением")
 					//TODO: send short error message
 				}
 			}
@@ -49,7 +51,8 @@ class SearchViewModel @Inject constructor(
 	private fun getHistory(){
 		ui {
 			searchInteractor.getHistory().collect{
-				viewState = SearchViewState.ShowHistory(it)
+				viewState = if (it.isNotEmpty()) SearchViewState.ShowHistory(it)
+				else SearchViewState.EmptyHistory
 			}
 		}
 	}

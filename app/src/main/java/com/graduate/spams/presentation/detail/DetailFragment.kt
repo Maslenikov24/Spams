@@ -29,6 +29,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 		scope.installViewModel<DetailViewModel>()
 	}
 
+	//TODO: toolbar!
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		binging.text.setOnClickListener {

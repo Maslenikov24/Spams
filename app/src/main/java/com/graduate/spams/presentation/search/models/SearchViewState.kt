@@ -7,4 +7,5 @@ sealed class SearchViewState {
 	object FinishedLoadingNumber : SearchViewState()
 	class FailedLoad(val message: String?) : SearchViewState()
 	class ShowHistory(val data: List<HistoryNumber>): SearchViewState()
+	object EmptyHistory : SearchViewState()
 }

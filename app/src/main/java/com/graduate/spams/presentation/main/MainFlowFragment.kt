@@ -10,7 +10,6 @@ import com.graduate.spams.databinding.FragmentMainFlowBinding
 import com.graduate.spams.presentation.main.models.MainFlowAction
 import com.graduate.spams.presentation.main.models.MainFlowEvent
 import com.graduate.spams.presentation.main.models.MainFlowViewState
-import kotlinx.android.synthetic.main.fragment_main_flow.*
 import toothpick.Scope
 import toothpick.ktp.binding.bind
 import toothpick.ktp.binding.module

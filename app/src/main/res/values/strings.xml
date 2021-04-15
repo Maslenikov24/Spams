@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Calls</string>
+    <string name="app_name">Spams</string>
     <string name="search_title">Поиск номера</string>
     <string name="recent_title">Список звонков</string>
     <string name="default_notification_channel_id">default</string>
+    <string name="connection_error">connection error</string>
 </resources>

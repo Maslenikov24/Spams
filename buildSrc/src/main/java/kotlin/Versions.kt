@@ -60,7 +60,10 @@ object Versions {
     // Timber
     const val timber = "4.7.1"
 
-    // Glide
-    const val glide = "4.11.0"
+    // Lottie
+    const val lottie = "3.4.0"
+
+    //FireBase
+    const val firebase_bom = "27.0.0"
 
 }

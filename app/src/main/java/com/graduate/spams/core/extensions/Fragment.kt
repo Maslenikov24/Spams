@@ -18,6 +18,7 @@ fun Fragment.checkPermission(context: Context): Boolean {
 		permissions.add(Permissions.READ_CALL_LOG)
 	}
 
+	@Suppress("DEPRECATION")
 	permissions.let {
 		if (it.count() > 0){
 			requestPermissions(it.toTypedArray(), 1)

@@ -37,6 +37,7 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 		scope.installViewModel<RecentViewModel>()
 	}
 
+	@Suppress("DEPRECATION")
 	override fun onRequestPermissionsResult(
 		requestCode: Int,
 		permissions: Array<out String>,

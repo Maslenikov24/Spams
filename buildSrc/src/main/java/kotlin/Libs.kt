@@ -63,12 +63,16 @@ object Libs {
     const val retrofit_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     const val retrofit_coroutines_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofit_coroutines}"
 
-    // Glide
-    const val glide_runtime = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-
     // Timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+    // Lottie
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+
+    //FireBase
+    const val firebase_bom = "com.google.firebase:firebase-bom:${Versions.firebase_bom}"
+    const val firebase_messaging = "com.google.firebase:firebase-messaging-ktx"
+    const val firebase_analytics = "com.google.firebase:firebase-analytics-ktx"
 
     // Unused
     const val plugins_android_junit5 = "1.5.2.0"

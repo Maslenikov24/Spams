@@ -32,9 +32,8 @@ class TabContainerFragment : BaseFragment<FragmentTabBinding>(), RouterProvider 
 	private val currentFragment: BaseFragment<*>?
 		get() = childFragmentManager.fragments.firstOrNull { !it.isHidden} as? BaseFragment<*>
 
-
-	override fun onActivityCreated(savedInstanceState: Bundle?) {
-		super.onActivityCreated(savedInstanceState)
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
 		if (childFragmentManager.findFragmentById(R.id.tab_container) == null){
 			cicerone.router.replaceScreen(
 				when (containerName){
@@ -44,10 +43,6 @@ class TabContainerFragment : BaseFragment<FragmentTabBinding>(), RouterProvider 
 				}
 			)
 		}
-	}
-
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		super.onViewCreated(view, savedInstanceState)
 	}
 
 	override fun onResume() {

@@ -25,13 +25,31 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TextAppearance.Manage.UID" parent="TextAppearance.Regular">
+    <style name="TextAppearance.History.Input" parent="TextAppearance.Regular">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.History.Title" parent="TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.History.Clear" parent="TextAppearance.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Manage.UidTitle" parent="TextAppearance.Regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary75</item>
+    </style>
+
+    <style name="TextAppearance.Manage.Uid" parent="TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="TextAppearance.Manage.CountOfChildren" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>

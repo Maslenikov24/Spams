@@ -43,7 +43,7 @@ class ManageFragment : BaseFragment<FragmentManageBinding>() {
 	fun renderViewState(viewState: ManageViewState){
 		when (viewState){
 			is ManageViewState.ShowUid -> {
-				binging.uid.text = "UID: ${viewState.uid}"
+				binging.uidNumber.text = viewState.uid
 			}
 		}
 	}

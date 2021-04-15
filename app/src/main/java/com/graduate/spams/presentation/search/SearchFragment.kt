@@ -2,7 +2,9 @@ package com.graduate.spams.presentation.search
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.DiffUtil
 import com.github.terrakok.cicerone.Router
+import com.graduate.spams.core.SearchHistoryDiffUtil
 import com.graduate.spams.core.extensions.snack
 import com.graduate.spams.core.extensions.subscribe
 import com.graduate.spams.core.extensions.visible
@@ -15,7 +17,6 @@ import com.graduate.spams.presentation.search.adapter.SearchAdapter
 import com.graduate.spams.presentation.search.models.SearchAction
 import com.graduate.spams.presentation.search.models.SearchEvent
 import com.graduate.spams.presentation.search.models.SearchViewState
-import kotlinx.android.synthetic.main.fragment_search.*
 import toothpick.Scope
 import toothpick.ktp.binding.bind
 import toothpick.ktp.binding.module
@@ -44,19 +45,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		binging.button.setOnClickListener {
-			val phoneNumber = binging.searchText.text.toString()
+		binging.searchButton.setOnClickListener {
+			val phoneNumber = binging.searchInput.text.toString()
 			viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
 		}
 
 		subscribe(viewModel.viewStates(), ::renderViewState)
 		subscribe(viewModel.viewActions(), ::renderAction)
 
-		recyclerView.apply {
+		binging.recyclerView.apply {
 			adapter = this@SearchFragment.adapter
 			setHasFixedSize(true)
 		}
 		viewModel.obtainEvent(SearchEvent.LoadHistory)
+
+		binging.clearHistory.setOnClickListener {
+			viewModel.obtainEvent(SearchEvent.DeleteAllHistory)
+		}
 	}
 
 	override fun onBackPressed(){
@@ -67,14 +72,18 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 		when (viewState){
 			is SearchViewState.StartLoadingNumber -> {
 				showProgress(true)
-				binging.searchInputLayout.isErrorEnabled = false
 			}
 			is SearchViewState.ShowHistory -> {
 				showData(viewState.data)
+				binging.animationView.visible(false)
+			}
+			is SearchViewState.EmptyHistory -> {
+				showData(emptyList())
+				binging.animationView.visible(true)
 			}
 			is SearchViewState.FinishedLoadingNumber -> {
 				showProgress(false)
-				binging.searchText.text?.clear()
+				binging.searchInput.text?.clear()
 				binging.recyclerView.post {
 					binging.recyclerView.smoothScrollToPosition(0)
 				}
@@ -82,7 +91,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 			is SearchViewState.FailedLoad -> {
 				showProgress(false)
 				viewState.message?.let {
-					binging.searchInputLayout.error = it
+					view?.snack(it)
 				}
 			}
 		}
@@ -100,11 +109,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 	}
 
 	private fun showProgress(show: Boolean){
-		binging.progressBar.visible(show, false)
+		binging.progressBar.visible(show)
+		binging.searchButton.visible(!show,false)
 	}
 
-	private fun showData(data: List<HistoryNumber>){
+	private fun showData(data: List<HistoryNumber>) {
+		val diffUtilCallback = SearchHistoryDiffUtil(data, adapter.items ?: emptyList())
+		val diffResult = DiffUtil.calculateDiff(diffUtilCallback)
 		adapter.items = data
-		adapter.notifyDataSetChanged()
+		diffResult.dispatchUpdatesTo(adapter)
 	}
 }

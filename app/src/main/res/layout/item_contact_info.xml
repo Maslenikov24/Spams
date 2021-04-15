@@ -9,7 +9,7 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:gravity="center"
     android:orientation="horizontal"
-    android:background="?attr/colorOnPrimary"
+    android:background="@color/background"
     android:padding="12dp">
 
     <ImageView
