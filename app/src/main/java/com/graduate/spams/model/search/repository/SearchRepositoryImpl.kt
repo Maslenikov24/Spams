@@ -4,6 +4,7 @@ import com.graduate.spams.core.extensions.fetchData
 import com.graduate.spams.data.history.db.HistoryDao
 import com.graduate.spams.data.history.db.HistoryEntity
 import com.graduate.spams.data.history.domain.HistoryNumber
+import com.graduate.spams.data.history.mapper.HistoryEntityToDomainMapper
 import com.graduate.spams.data.history.mapper.HistoryResponseToEntityMapper
 import com.graduate.spams.data.number.domain.PhoneNumber
 import com.graduate.spams.data.number.mapper.PhoneNumberResponseToDomainMapper
@@ -17,8 +18,9 @@ import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(
 	private val searchService: SearchService,
-	private val historyDao: HistoryDao, //TODO: refactor to history
+	private val historyDao: HistoryDao,
 	private val historyResponseToEntityMapper: HistoryResponseToEntityMapper,
+	private val historyEntityToDomainMapper: HistoryEntityToDomainMapper,
 	private val phoneNumberResponseToDomainMapper: PhoneNumberResponseToDomainMapper,
 	@IO private val ioDispatcher: CoroutineDispatcher
 ): SearchRepository {
@@ -39,7 +41,7 @@ class SearchRepositoryImpl @Inject constructor(
 	override fun getHistory() : Flow<List<HistoryNumber>> =
 		historyDao.getHistory().map { it ->
 			it.map { item ->
-				HistoryNumber(id = item.id, number = item.number, date = item.date, rating = item.rating) // Todo: mapper
+				historyEntityToDomainMapper.map(item)
 			}
 		}.flowOn(ioDispatcher)
 

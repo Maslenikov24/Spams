@@ -10,6 +10,7 @@ import com.graduate.spams.core.extensions.subscribe
 import com.graduate.spams.core.presentation.BaseFragment
 import com.graduate.spams.data.contact.domain.Contact
 import com.graduate.spams.databinding.FragmentRecentBinding
+import com.graduate.spams.di.NestedRouter
 import com.graduate.spams.presentation.common.RouterProvider
 import com.graduate.spams.presentation.recent.adapter.RecentAdapter
 import com.graduate.spams.presentation.recent.models.RecentAction
@@ -28,7 +29,7 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 	override fun installModules(scope: Scope) {
 		super.installModules(scope)
 		scope.installModules(module {
-			bind<Router>().toInstance((parentFragment as RouterProvider).router)
+			bind<Router>().withName(NestedRouter::class).toInstance((parentFragment as RouterProvider).router)
 			bind<RecentInteractor>().toClass<RecentInteractorImpl>()
 			bind<(String, String?) -> Unit>().toInstance { number, name ->
 				viewModel.obtainEvent(RecentEvent.OpenDetail(number, name))
@@ -62,8 +63,13 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 		subscribe(viewModel.viewStates(), ::renderViewState)
 		subscribe(viewModel.viewActions(), ::renderAction)
 
-		binging.recyclerView.adapter = adapter
+		with(binging) {
+			recyclerView.adapter = adapter
 
+			toolbar.setNavigationOnClickListener {
+				viewModel.obtainEvent(RecentEvent.OpenManage)
+			}
+		}
 		if (this.checkPermission(requireContext())) viewModel.obtainEvent(RecentEvent.LoadRecent)
 	}
 

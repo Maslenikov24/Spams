@@ -3,6 +3,7 @@ package com.graduate.spams.presentation.recent
 import com.github.terrakok.cicerone.Router
 import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
+import com.graduate.spams.di.NestedRouter
 import com.graduate.spams.presentation.recent.models.RecentAction
 import com.graduate.spams.presentation.recent.models.RecentEvent
 import com.graduate.spams.presentation.recent.models.RecentViewState
@@ -12,6 +13,7 @@ import javax.inject.Inject
 
 class RecentViewModel @Inject constructor(
 	private val router : Router,
+	@NestedRouter private val nestedRouter : Router,
 	private val recentInteractor: RecentInteractor
 ): BaseViewModel<RecentViewState, RecentAction, RecentEvent>() {
 
@@ -23,11 +25,14 @@ class RecentViewModel @Inject constructor(
 			is RecentEvent.BackPressed -> onBackPressed()
 			is RecentEvent.LoadRecent -> getRecent()
 			is RecentEvent.OpenDetail -> navigateToDetail(viewEvent.number, viewEvent.name)
+			is RecentEvent.OpenManage -> navigateToManage()
 		}
 	}
 
 	private fun navigateToDetail(number: String, name: String?) =
-		router.navigateTo(Screens.detail(number, name))
+		nestedRouter.navigateTo(Screens.detail(number, name))
+
+	private fun navigateToManage() = router.navigateTo(Screens.manage())
 
 	private fun getRecent() {
 		ui {

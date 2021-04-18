@@ -24,9 +24,6 @@ class MainFlowViewModel @Inject constructor(
 			is MainFlowEvent.BackPressed -> {
 
 			}
-			is MainFlowEvent.OpenControl -> {
-				openControlPanel()
-			}
 		}
 	}
 

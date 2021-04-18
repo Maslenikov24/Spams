@@ -8,6 +8,8 @@ import com.graduate.spams.di.provider.server.*
 import com.graduate.spams.di.provider.service.AuthServiceProvider
 import com.graduate.spams.di.provider.service.SearchServiceProvider
 import com.graduate.spams.model.auth.net.service.AuthService
+import com.graduate.spams.model.detail.repository.DeatilRepositoryImpl
+import com.graduate.spams.model.detail.repository.DetailRepository
 import com.graduate.spams.model.manage.ManageRepository
 import com.graduate.spams.model.manage.ManageRepositoryImpl
 import com.graduate.spams.model.notification.NotificationRepository
@@ -53,6 +55,7 @@ fun appModule(context: Context) = module {
     bind<SearchInteractor>().toClass<SearchInteractorImpl>()
     bind<SearchRepository>().toClass<SearchRepositoryImpl>()
     bind<RecentRepository>().toClass<RecentRepositoryImpl>()
+    bind<DetailRepository>().toClass<DeatilRepositoryImpl>()
     bind<ManageRepository>().toClass<ManageRepositoryImpl>()
     bind<NotificationRepository>().toClass<NotificationRepositoryImpl>()
 

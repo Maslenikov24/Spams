@@ -14,7 +14,8 @@
         android:id="@+id/ratingIcon"
         android:padding="2dp"
         android:layout_width="28dp"
-        android:layout_height="28dp" />
+        android:layout_height="28dp"
+        app:srcCompat="@drawable/ic_history"/>
 
     <TextView
         android:id="@+id/phoneNumber"

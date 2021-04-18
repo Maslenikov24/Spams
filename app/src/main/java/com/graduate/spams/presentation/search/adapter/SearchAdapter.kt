@@ -36,17 +36,7 @@ fun searchAdapterDelegate(
 				removeClickListener.invoke(item.id)
 			}
 
-			when (item.rating){
-				0 -> {
-					ratingIcon.setImageResource(R.drawable.ic_info)
-				}
-				5 -> {
-					ratingIcon.setImageResource(R.drawable.ic_warning)
-				}
-				10 -> {
-					ratingIcon.setImageResource(R.drawable.ic_error)
-				}
-			}
+			ratingIcon.setColorFilter(context.getColor(R.color.colorAccent))
 		}
 	}
 }

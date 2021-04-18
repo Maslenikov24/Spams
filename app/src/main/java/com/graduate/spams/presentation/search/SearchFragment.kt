@@ -12,6 +12,7 @@ import com.graduate.spams.core.presentation.BaseFragment
 import com.graduate.spams.data.history.domain.HistoryNumber
 import com.graduate.spams.databinding.FragmentSearchBinding
 import com.graduate.spams.di.Adapter
+import com.graduate.spams.di.NestedRouter
 import com.graduate.spams.presentation.common.RouterProvider
 import com.graduate.spams.presentation.search.adapter.SearchAdapter
 import com.graduate.spams.presentation.search.models.SearchAction
@@ -30,7 +31,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 	override fun installModules(scope: Scope) {
 		super.installModules(scope)
 		scope.installModules(module {
-			bind<Router>().toInstance((parentFragment as RouterProvider).router)
+			bind<Router>().withName(NestedRouter::class).toInstance((parentFragment as RouterProvider).router)
 			bind<SearchInteractor>().toClass<SearchInteractorImpl>()
 			bind<(String) -> Unit>().withName(Adapter::class).toInstance { number ->
 				viewModel.obtainEvent(SearchEvent.OpenDetail(number))
@@ -45,22 +46,28 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		binging.searchButton.setOnClickListener {
-			val phoneNumber = binging.searchInput.text.toString()
-			viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
-		}
-
 		subscribe(viewModel.viewStates(), ::renderViewState)
 		subscribe(viewModel.viewActions(), ::renderAction)
-
-		binging.recyclerView.apply {
-			adapter = this@SearchFragment.adapter
-			setHasFixedSize(true)
-		}
 		viewModel.obtainEvent(SearchEvent.LoadHistory)
 
-		binging.clearHistory.setOnClickListener {
-			viewModel.obtainEvent(SearchEvent.DeleteAllHistory)
+		with(binging){
+			searchButton.setOnClickListener {
+				val phoneNumber = binging.searchInput.text.toString()
+				viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
+			}
+
+			recyclerView.apply {
+				adapter = this@SearchFragment.adapter
+				setHasFixedSize(true)
+			}
+
+			clearHistory.setOnClickListener {
+				viewModel.obtainEvent(SearchEvent.DeleteAllHistory)
+			}
+
+			toolbar.setNavigationOnClickListener {
+				viewModel.obtainEvent(SearchEvent.OpenManage)
+			}
 		}
 	}
 

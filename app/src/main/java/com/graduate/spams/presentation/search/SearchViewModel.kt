@@ -4,6 +4,7 @@ import com.github.terrakok.cicerone.Router
 import com.graduate.spams.BuildConfig
 import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
+import com.graduate.spams.di.NestedRouter
 import com.graduate.spams.presentation.search.models.SearchAction
 import com.graduate.spams.presentation.search.models.SearchEvent
 import com.graduate.spams.presentation.search.models.SearchViewState
@@ -15,6 +16,7 @@ import javax.inject.Inject
 
 class SearchViewModel @Inject constructor(
 	private val router: Router,
+	@NestedRouter private val nestedRouter: Router,
 	private val searchInteractor: SearchInteractor
 ): BaseViewModel<SearchViewState, SearchAction, SearchEvent>() {
 
@@ -27,6 +29,7 @@ class SearchViewModel @Inject constructor(
 			is SearchEvent.ConfirmExit -> onConfirmExit()
 			is SearchEvent.BackPressed -> onBackPressed()
 			is SearchEvent.OpenDetail -> navigateToDetail(viewEvent.number)
+			is SearchEvent.OpenManage -> navigateToManage()
 			is SearchEvent.DeleteFromHistory -> deleteFromHistory(viewEvent.id)
 			is SearchEvent.DeleteAllHistory -> deleteAllHistory()
 		}
@@ -58,9 +61,11 @@ class SearchViewModel @Inject constructor(
 	}
 
 	private fun navigateToDetail(number: String) {
-		router.navigateTo(Screens.detail(number))
+		nestedRouter.navigateTo(Screens.detail(number))
 		viewAction = SearchAction.Nothing
 	}
+
+	private fun navigateToManage() = router.navigateTo(Screens.manage())
 
 	private fun deleteFromHistory(id: Long){
 		ui{

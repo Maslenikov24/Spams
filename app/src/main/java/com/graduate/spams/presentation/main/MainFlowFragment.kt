@@ -8,7 +8,6 @@ import com.graduate.spams.core.extensions.toast
 import com.graduate.spams.core.presentation.BaseFragment
 import com.graduate.spams.databinding.FragmentMainFlowBinding
 import com.graduate.spams.presentation.main.models.MainFlowAction
-import com.graduate.spams.presentation.main.models.MainFlowEvent
 import com.graduate.spams.presentation.main.models.MainFlowViewState
 import toothpick.Scope
 import toothpick.ktp.binding.bind
@@ -40,19 +39,12 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 		selectTab(currentFragment?.tag?: TAB_SEARCH)
 		subscribe(viewModel.viewStates(), ::renderViewState)
 		subscribe(viewModel.viewActions(), ::renderActions)
-
-		binging.toolbar.apply {
-			setNavigationIcon(R.drawable.ic_manage)
-			setNavigationOnClickListener {
-				viewModel.obtainEvent(MainFlowEvent.OpenControl)
-			}
-		}
 	}
 
 	override fun renderViewState(viewState: MainFlowViewState) {
 		when (viewState){
 			is MainFlowViewState.SetToolbarWith -> {
-				binging.toolbar.title = viewState.title
+
 			}
 		}
 	}
@@ -73,11 +65,9 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding>(), MainFlowView {
 			setOnNavigationItemSelectedListener {
 				when (it.itemId){
 					R.id.search -> {
-						binging.toolbar.title = context.getString(R.string.search_title)
 						selectTab(TAB_SEARCH)
 					}
 					R.id.recent -> {
-						binging.toolbar.title = context.getString(R.string.recent_title)
 						selectTab(TAB_RECENT)
 					}
 				}

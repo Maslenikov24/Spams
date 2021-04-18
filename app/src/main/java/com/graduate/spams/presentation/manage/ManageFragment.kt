@@ -32,15 +32,19 @@ class ManageFragment : BaseFragment<FragmentManageBinding>() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		binging.toolbar.apply {
-			setNavigationIcon(R.drawable.ic_back)
-			setNavigationOnClickListener {
-				viewModel.obtainEvent(ManageEvent.BackPressed)
+		with(binging){
+			appBar.apply {
+				setNavigationOnClickListener {
+					onBackPressed()
+				}
+				setActionOnClickListener {
+
+				}
 			}
 		}
 	}
 
-	fun renderViewState(viewState: ManageViewState){
+	private fun renderViewState(viewState: ManageViewState){
 		when (viewState){
 			is ManageViewState.ShowUid -> {
 				binging.uidNumber.text = viewState.uid

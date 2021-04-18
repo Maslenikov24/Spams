@@ -19,3 +19,6 @@ annotation class Adapter
 
 @Qualifier
 annotation class MacAddress
+
+@Qualifier
+annotation class NestedRouter

@@ -1,8 +1,6 @@
 package com.graduate.spams.presentation.search
 
 import com.graduate.spams.model.search.repository.SearchRepository
-import timber.log.Timber
-import java.net.ConnectException
 import javax.inject.Inject
 
 class SearchInteractorImpl @Inject constructor(

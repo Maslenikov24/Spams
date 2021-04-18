@@ -44,12 +44,29 @@
     </style>
 
     <style name="TextAppearance.Manage.Uid" parent="TextAppearance.Medium">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Manage.Item.Title" parent="TextAppearance.Regular">
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextAppearance.Manage.CountOfChildren" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Detail.Name" parent="TextAppearance.Regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary75</item>
+    </style>
+
+    <style name="TextAppearance.Detail.Number" parent="TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.AppBar.Title" parent="TextAppearance.Medium">
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

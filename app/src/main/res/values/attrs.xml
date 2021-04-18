@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ManageItemView">
+        <attr name="icon" format="reference"/>
+        <attr name="text" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="AppBar">
+        <attr name="navigationIcon" format="reference"/>
+        <attr name="actionIcon" format="reference"/>
+        <attr name="title" format="string" />
+    </declare-styleable>
+</resources>
