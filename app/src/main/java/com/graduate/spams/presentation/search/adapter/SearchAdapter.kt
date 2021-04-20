@@ -36,7 +36,7 @@ fun searchAdapterDelegate(
 				removeClickListener.invoke(item.id)
 			}
 
-			ratingIcon.setColorFilter(context.getColor(R.color.colorAccent))
+			historyIcon.setColorFilter(context.getColor(R.color.colorAccent))
 		}
 	}
 }

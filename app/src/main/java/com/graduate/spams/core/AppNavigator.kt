@@ -123,21 +123,25 @@ open class AppNavigator @JvmOverloads constructor(
 		val fragment = screen.createFragment(fragmentFactory)
 		val transaction = fragmentManager.beginTransaction()
 		transaction.setReorderingAllowed(true)
-		if (addToBackStack) setupFragmentTransaction(
-			transaction,
-			fragmentManager.findFragmentById(containerId),
-			fragment
-		)
-		when (type) {
-			ADD -> transaction.add(containerId, fragment, screen.screenKey)
-			REPLACE -> transaction.replace(containerId, fragment, screen.screenKey)
+		if (fragment is DialogFragment){
+			fragment.show(transaction, screen.screenKey)
+		} else {
+			if (addToBackStack) setupFragmentTransaction(
+				transaction,
+				fragmentManager.findFragmentById(containerId),
+				fragment
+			)
+			when (type) {
+				ADD -> transaction.add(containerId, fragment, screen.screenKey)
+				REPLACE -> transaction.replace(containerId, fragment, screen.screenKey)
+			}
+			if (addToBackStack) {
+				val transactionInfo = TransactionInfo(screen.screenKey, type)
+				transaction.addToBackStack(transactionInfo.toString())
+				localStackCopy.add(transactionInfo)
+			}
+			transaction.commit()
 		}
-		if (addToBackStack) {
-			val transactionInfo = TransactionInfo(screen.screenKey, type)
-			transaction.addToBackStack(transactionInfo.toString())
-			localStackCopy.add(transactionInfo)
-		}
-		transaction.commit()
 	}
 
 	/**

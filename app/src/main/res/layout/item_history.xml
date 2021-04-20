@@ -11,7 +11,7 @@
     android:padding="12dp">
 
     <ImageView
-        android:id="@+id/ratingIcon"
+        android:id="@+id/historyIcon"
         android:padding="2dp"
         android:layout_width="28dp"
         android:layout_height="28dp"

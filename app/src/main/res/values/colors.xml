@@ -20,4 +20,8 @@
     <color name="dividerColor">@color/lightGray</color>
 
     <color name="contactName">@color/black</color>
+    <color name="bottomLine">@color/colorPrimaryDark</color>
+    <color name="colorOnSecondary">@color/black</color>
+
+    <color name="phoneIndicatorColor">@color/primary50</color>
 </resources>

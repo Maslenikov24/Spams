@@ -8,18 +8,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.24444444444444444" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.24074074074074073" />
         <entry key="app/src/main/res/drawable/bg_appbar_icon.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_appbar_icon_round.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_content_round.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_corner_round.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/bg_history_round.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/drawable/bg_manage_header.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/bg_ripple_appbar_icon.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_ripple_manage_item.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_search_input.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/drawable/bottom_sheet_line.xml" value="0.24259259259259258" />
+        <entry key="app/src/main/res/drawable/bottom_sheet_top_corner_radius.xml" value="0.24259259259259258" />
         <entry key="app/src/main/res/drawable/ic_admin_panel.xml" value="0.10277777777777777" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/drawable/ic_call_canceled.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/ic_call_incoming.xml" value="0.1388888888888889" />
+        <entry key="app/src/main/res/drawable/ic_call_missed.xml" value="0.2078125" />
+        <entry key="app/src/main/res/drawable/ic_call_outgoing.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/ic_google.xml" value="0.2574074074074074" />
         <entry key="app/src/main/res/drawable/ic_history.xml" value="0.2574074074074074" />
         <entry key="app/src/main/res/drawable/ic_info.xml" value="0.24444444444444444" />
@@ -33,6 +39,7 @@
         <entry key="app/src/main/res/drawable/ic_users_circle.xml" value="0.440625" />
         <entry key="app/src/main/res/drawable/selector_bottom_navigation.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/transition_background.xml" value="0.1388888888888889" />
+        <entry key="app/src/main/res/layout/fragment_bottom_about.xml" value="0.3020833333333333" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_main_flow.xml" value="0.2111971809735116" />
         <entry key="app/src/main/res/layout/fragment_manage.xml" value="0.16104041957399656" />

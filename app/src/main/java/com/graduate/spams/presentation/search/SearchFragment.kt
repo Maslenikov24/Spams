@@ -1,9 +1,11 @@
 package com.graduate.spams.presentation.search
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import com.github.terrakok.cicerone.Router
+import com.graduate.spams.R
 import com.graduate.spams.core.SearchHistoryDiffUtil
 import com.graduate.spams.core.extensions.snack
 import com.graduate.spams.core.extensions.subscribe
@@ -51,9 +53,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 		viewModel.obtainEvent(SearchEvent.LoadHistory)
 
 		with(binging){
-			searchButton.setOnClickListener {
-				val phoneNumber = binging.searchInput.text.toString()
-				viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
+			searchButton.apply {
+				setColorFilter(requireContext().getColor(R.color.primary75), PorterDuff.Mode.SRC_IN)
+				setOnClickListener {
+					val phoneNumber = binging.searchInput.text.toString()
+					viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
+				}
 			}
 
 			recyclerView.apply {

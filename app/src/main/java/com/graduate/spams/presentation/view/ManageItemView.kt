@@ -2,7 +2,7 @@ package com.graduate.spams.presentation.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.LinearLayout
+import android.widget.FrameLayout
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.graduate.spams.R
@@ -12,7 +12,7 @@ class ManageItemView @JvmOverloads constructor(
 	context: Context,
 	attrs: AttributeSet ?= null,
 	defStyle: Int = 0
-): LinearLayout(context, attrs, defStyle){
+): FrameLayout(context, attrs, defStyle){
 
 	private val binding: ViewManageBinding by viewBinding(CreateMethod.BIND)
 
@@ -26,5 +26,11 @@ class ManageItemView @JvmOverloads constructor(
 			image.setImageResource(imageResource)
 		}
 
+	}
+
+	fun setOnItemClick(listener: () -> Unit) {
+		binding.linearLayout.setOnClickListener {
+			listener.invoke()
+		}
 	}
 }

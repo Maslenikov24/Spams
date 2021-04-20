@@ -1,6 +1,7 @@
 package com.graduate.spams.presentation.manage
 
 import com.github.terrakok.cicerone.Router
+import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
 import com.graduate.spams.presentation.manage.models.ManageAction
 import com.graduate.spams.presentation.manage.models.ManageEvent
@@ -20,6 +21,8 @@ class ManageViewModel @Inject constructor(
 	override fun obtainEvent(viewEvent: ManageEvent) {
 		when (viewEvent){
 			is ManageEvent.BackPressed -> onBackPressed()
+			is ManageEvent.OpenAbout -> openAbout()
+			is ManageEvent.OpenSettings -> {}
 		}
 	}
 
@@ -30,6 +33,8 @@ class ManageViewModel @Inject constructor(
 			}
 		}
 	}
+
+	private fun openAbout() = router.navigateTo(Screens.about())
 
 	fun onBackPressed() = router.exit()
 }

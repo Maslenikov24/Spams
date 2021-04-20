@@ -1,6 +1,7 @@
 package com.graduate.spams.core
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.graduate.spams.presentation.AboutBottomSheetDialog
 import com.graduate.spams.presentation.manage.ManageFragment
 import com.graduate.spams.presentation.detail.DetailFragment
 import com.graduate.spams.presentation.main.MainFlowFragment
@@ -16,4 +17,5 @@ object Screens {
 		DetailFragment.newInstance(RecentStartParams(number, name))
 	}
 	fun manage() = FragmentScreen { ManageFragment() }
+	fun about() = FragmentScreen { AboutBottomSheetDialog() }
 }

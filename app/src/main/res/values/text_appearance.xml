@@ -2,7 +2,7 @@
 <resources>
 
     <style name="TextAppearance" parent="AppTheme">
-        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
     </style>
 
     <style name="TextAppearance.Regular" parent="TextAppearance">
@@ -53,7 +53,7 @@
 
     <style name="TextAppearance.Manage.CountOfChildren" parent="TextAppearance.Regular">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/primary75</item>
     </style>
 
     <style name="TextAppearance.Detail.Name" parent="TextAppearance.Regular">
@@ -65,8 +65,20 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="TextAppearance.AppBar.Title" parent="TextAppearance.Medium">
+    <style name="TextAppearance.AppBar.Title" parent="TextAppearance.Regular">
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.About.Title" parent="TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.About.Version" parent="TextAppearance.Regular">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.About.Contacts" parent="TextAppearance.Regular">
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

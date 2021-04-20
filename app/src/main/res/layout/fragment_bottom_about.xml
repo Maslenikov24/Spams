@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="25dp">
+
+<!--    Todo: crate style for titles (with paddings & textAppearance)-->
+    <TextView
+        android:id="@+id/title"
+        android:text="О приложении"
+        android:paddingStart="14dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="14dp"
+        android:textAppearance="@style/TextAppearance.About.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/version"
+        android:text="Версия 1.0"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textAppearance="@style/TextAppearance.About.Version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Контакты: spams@study.utmn.ru"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:textColorLink="@color/colorAccent"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textAppearance="@style/TextAppearance.About.Contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
