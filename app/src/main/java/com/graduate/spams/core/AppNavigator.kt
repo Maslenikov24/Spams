@@ -18,6 +18,7 @@ import com.github.terrakok.cicerone.androidx.TransactionInfo
 import com.github.terrakok.cicerone.androidx.TransactionInfo.Type.ADD
 import com.github.terrakok.cicerone.androidx.TransactionInfo.Type.REPLACE
 import com.graduate.spams.R
+import com.graduate.spams.presentation.manage.ManageFragment
 
 /**
  * Navigator implementation for launch fragments and activities.
@@ -126,6 +127,7 @@ open class AppNavigator @JvmOverloads constructor(
 		if (fragment is DialogFragment){
 			fragment.show(transaction, screen.screenKey)
 		} else {
+			//Todo: refactor in cicerone 7.0
 			if (addToBackStack) setupFragmentTransaction(
 				transaction,
 				fragmentManager.findFragmentById(containerId),

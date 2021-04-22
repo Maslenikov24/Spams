@@ -8,4 +8,5 @@ sealed class SearchViewState {
 	class FailedLoad(val message: String?) : SearchViewState()
 	class ShowHistory(val data: List<HistoryNumber>): SearchViewState()
 	object EmptyHistory : SearchViewState()
+	object HideFloatingButton : SearchViewState()
 }

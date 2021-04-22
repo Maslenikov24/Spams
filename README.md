@@ -12,12 +12,17 @@
 + Material (+Night mode)
 + buildSrc
 + gradle.kts
-+ Call(Screening)Services + BroadcastReceiver
-+ Firebase: CloudMessaging + Crashlitics
++ Call(Screening)Services (+ BroadcastReceiver)
++ Firebase CloudMessaging
++ Permissions
 
 ##BackStack
 ± ErrorHandlers
-± Manifest = Permissions + intent-filters, BroadCastReceiver....
+± splash screen
+- Firebase Crashlitics
+- intent-filters, BroadCastReceiver....
+- Check for first start (token)
+- preview screens 
 - deferred request
 - Motion Layout!!!
 - CallService

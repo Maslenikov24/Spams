@@ -22,13 +22,60 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/emptyAnimationView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rotation="35"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="empty_astronaut.json"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:visibility="gone"
+        app:lottie_loop="true"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/blockingLayout"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/blockingAnimationView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="unlock.json"
+            app:lottie_loop="true"
+            app:lottie_colorFilter="@color/middleGray"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/acceptPermission"
+            android:text="Разрешить"
+            android:textColor="@color/colorAccent"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:rippleColor="?attr/colorControlHighlight"
+            app:strokeColor="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/blockingAnimationView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        tools:listitem="@layout/item_contact_info" />
+        tools:listitem="@layout/item_contact_info"
+        android:visibility="gone"/>
 
     <!--TODO: create & include permission layout-->
 

@@ -1,4 +1,4 @@
-package com.graduate.spams.presentation
+package com.graduate.spams.presentation.about
 
 import android.os.Bundle
 import android.view.LayoutInflater

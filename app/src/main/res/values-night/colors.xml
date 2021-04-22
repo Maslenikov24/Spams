@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/white</color>
+<!--    <color name="colorPrimary">#353C45</color>-->
+    <color name="colorPrimary">#EAB941</color>
     <color name="colorPrimaryDark">#191F25</color>
     <color name="colorAccent">#EAB941</color>
     <color name="background">#20272F</color>
     <color name="lightGray">#151515</color>
-    <color name="middleGray">#252525</color>
+    <color name="middleGray">#676767</color>
     <color name="darkGray">#676767</color>
 
+    <color name="primary20">#20ffffff</color>
     <color name="primary50">#50ffffff</color>
     <color name="primary75">#75ffffff</color>
 

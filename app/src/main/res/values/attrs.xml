@@ -5,6 +5,11 @@
         <attr name="text" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="PermissionItemView">
+        <attr name="permissionIcon" format="reference"/>
+        <attr name="permissionName" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="AppBar">
         <attr name="navigationIcon" format="reference"/>
         <attr name="actionIcon" format="reference"/>

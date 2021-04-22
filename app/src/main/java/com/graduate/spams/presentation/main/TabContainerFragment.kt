@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.View
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
-import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.graduate.spams.R
+import com.graduate.spams.core.AppNavigator
 import com.graduate.spams.core.Screens
-import com.graduate.spams.core.extensions.toast
 import com.graduate.spams.core.presentation.BaseFragment
 import com.graduate.spams.databinding.FragmentTabBinding
 import com.graduate.spams.di.LocalCiceroneHolder
 import com.graduate.spams.presentation.common.RouterProvider
-import toothpick.Scope
 import toothpick.ktp.delegate.inject
 
 class TabContainerFragment : BaseFragment<FragmentTabBinding>(), RouterProvider {

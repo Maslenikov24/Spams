@@ -11,8 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
-import com.graduate.spams.core.AppNavigator
 import com.graduate.spams.R
+import com.graduate.spams.core.AppNavigator
 import com.graduate.spams.di.Scopes
 import com.graduate.spams.di.utils.ToothpickViewModelFactory
 import com.graduate.spams.core.extensions.subscribe
@@ -35,7 +35,7 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val viewModel by inject<AppViewModel>()
 
-    private val navigator: Navigator = object : com.graduate.spams.core.AppNavigator(this, R.id.container/*, supportFragmentManager*/){
+    private val navigator: Navigator = object : AppNavigator(this, R.id.container, supportFragmentManager){
         override fun applyCommand(command: Command) {
             super.applyCommand(command)
         }
@@ -49,12 +49,12 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
         Timber.tag("AppLog").d("Activity onCreate()")
         super.onCreate(savedInstanceState)
         Timber.tag("AppLog").d(savedInstanceState.toString())
+        window?.setBackgroundDrawableResource(R.color.background)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         if (savedInstanceState == null) {
             subscribe(viewModel.viewStates(), ::renderViewState)
             subscribe(viewModel.viewActions(), ::renderAction)
-
             viewModel.obtainEvent(AppEvent.FirstStart)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

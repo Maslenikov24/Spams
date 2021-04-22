@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.github.terrakok.cicerone.Router
 import com.graduate.spams.R
 import com.graduate.spams.core.SearchHistoryDiffUtil
-import com.graduate.spams.core.extensions.snack
-import com.graduate.spams.core.extensions.subscribe
-import com.graduate.spams.core.extensions.visible
+import com.graduate.spams.core.extensions.*
 import com.graduate.spams.core.presentation.BaseFragment
 import com.graduate.spams.data.history.domain.HistoryNumber
 import com.graduate.spams.databinding.FragmentSearchBinding
@@ -73,6 +71,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 			toolbar.setNavigationOnClickListener {
 				viewModel.obtainEvent(SearchEvent.OpenManage)
 			}
+
+			floatingActionButton.setOnClickListener {
+				viewModel.obtainEvent(SearchEvent.OpenPermissions)
+			}
+			if (checkPermissions(requireContext())) floatingActionButton.visible(false)
 		}
 	}
 
@@ -105,6 +108,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 				viewState.message?.let {
 					view?.snack(it)
 				}
+			}
+			is SearchViewState.HideFloatingButton -> {
+				binging.floatingActionButton.visible(false)
 			}
 		}
 	}

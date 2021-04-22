@@ -52,11 +52,14 @@ class ManageFragment : BaseFragment<FragmentManageBinding>() {
 				showUidInfoDialog()
 			}
 
+			uidNumber.setOnClickListener(::copyUid)
+
 			about.setOnItemClick {
 				viewModel.obtainEvent(ManageEvent.OpenAbout)
 			}
-
-			uidNumber.setOnClickListener(::copyUid)
+			permissions.setOnItemClick {
+				viewModel.obtainEvent(ManageEvent.OpenPermissions)
+			}
 		}
 	}
 

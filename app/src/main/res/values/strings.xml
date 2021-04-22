@@ -4,4 +4,7 @@
     <string name="recent_title">Список звонков</string>
     <string name="default_notification_channel_id">default</string>
     <string name="connection_error">connection error</string>
+    <string name="permissions_hint">Чтобы отклонить одобренные разрешения обратно, воспользвуйтесь настройками телефона.</string>
+    <string name="permissions_for_calls">Для звонков</string>
+    <string name="permissions_others">Другое</string>
 </resources>

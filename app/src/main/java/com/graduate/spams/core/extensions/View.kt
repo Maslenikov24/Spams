@@ -10,3 +10,8 @@ fun View.visible(isVisible: Boolean, isGone: Boolean = true) {
 			else View.INVISIBLE
 		}
 }
+
+fun View.replaceTo(view: View){
+	this.visible(false)
+	view.visible(true)
+}

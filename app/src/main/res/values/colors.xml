@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/black</color>
+<!--    <color name="colorPrimary">#EBECF0</color>-->
+    <color name="colorPrimary">#EAB941</color>
     <color name="colorPrimaryDark">#F5F5F5</color>
     <color name="colorAccent">#EAB941</color>
     <color name="background">@color/white</color>
@@ -8,10 +9,13 @@
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>
     <color name="darkGray">#A5A5A5</color>
-    <color name="middleGray">#E0E0E0</color>
+    <color name="middleGray">#D0D0D0</color>
     <color name="lightGray">#F7F7F7</color>
+    <color name="primary20">#20000000</color>
     <color name="primary50">#50000000</color>
     <color name="primary75">#75000000</color>
+
+    <color name="positiveColor">#69F0AE</color>
 
     <color name="missedCall">#F44336</color>
     <color name="incomingCall">@color/darkGray</color>

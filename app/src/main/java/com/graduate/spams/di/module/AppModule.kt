@@ -1,6 +1,7 @@
 package com.graduate.spams.di.module
 
 import android.content.Context
+import com.graduate.spams.core.PermissionsListener
 import com.graduate.spams.model.preferences.app.AppPreferenceStorage
 import com.graduate.spams.model.preferences.app.AppPreferenceStorageImpl
 import com.graduate.spams.di.*
@@ -60,5 +61,7 @@ fun appModule(context: Context) = module {
     bind<NotificationRepository>().toClass<NotificationRepositoryImpl>()
 
     bind<String>().withName(MacAddress::class).toProvider(MacAddressProvider::class).providesSingleton()
+
+    bind<PermissionsListener>().singleton()
 
 }

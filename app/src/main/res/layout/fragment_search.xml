@@ -128,13 +128,24 @@
                     android:rotation="35"
                     app:lottie_autoPlay="true"
                     app:lottie_fileName="empty_astronaut.json"
-                    app:lottie_loop="true"
-                    app:tint="@color/black" />
+                    app:lottie_loop="true"/>
 
             </FrameLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_lock"
+        app:tint="@color/background"
+        app:fabSize="normal"
+        android:contentDescription="@null" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

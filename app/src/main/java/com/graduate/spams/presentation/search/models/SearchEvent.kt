@@ -7,6 +7,7 @@ sealed class SearchEvent {
 	object BackPressed : SearchEvent()
 	class OpenDetail(val number: String) : SearchEvent()
 	object OpenManage : SearchEvent()
+	object OpenPermissions : SearchEvent()
 	class DeleteFromHistory(val id: Long) : SearchEvent()
 	object DeleteAllHistory : SearchEvent()
 }

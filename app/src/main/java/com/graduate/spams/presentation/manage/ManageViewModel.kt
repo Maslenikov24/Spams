@@ -21,8 +21,9 @@ class ManageViewModel @Inject constructor(
 	override fun obtainEvent(viewEvent: ManageEvent) {
 		when (viewEvent){
 			is ManageEvent.BackPressed -> onBackPressed()
-			is ManageEvent.OpenAbout -> openAbout()
 			is ManageEvent.OpenSettings -> {}
+			is ManageEvent.OpenPermissions -> openPermissions()
+			is ManageEvent.OpenAbout -> openAbout()
 		}
 	}
 
@@ -35,6 +36,8 @@ class ManageViewModel @Inject constructor(
 	}
 
 	private fun openAbout() = router.navigateTo(Screens.about())
+
+	private fun openPermissions() = router.navigateTo(Screens.permissions())
 
 	fun onBackPressed() = router.exit()
 }

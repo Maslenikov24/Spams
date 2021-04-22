@@ -4,7 +4,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven("http://repository.jetbrains.com/all")
+        maven("https://repository.jetbrains.com/all")
         maven("https://maven.fabric.io/public")
         maven("https://www.jitpack.io")
         
@@ -20,7 +20,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven("http://repository.jetbrains.com/all")
+        maven("https://repository.jetbrains.com/all")
     }
 }
 

@@ -8,7 +8,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.24074074074074073" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/drawable/bg_appbar_icon.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_appbar_icon_round.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/drawable/bg_content_round.xml" value="0.24444444444444444" />
@@ -24,33 +24,53 @@
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/ic_call_canceled.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/ic_call_incoming.xml" value="0.1388888888888889" />
+        <entry key="app/src/main/res/drawable/ic_call_log.xml" value="0.2962962962962963" />
         <entry key="app/src/main/res/drawable/ic_call_missed.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/ic_call_outgoing.xml" value="0.2078125" />
+        <entry key="app/src/main/res/drawable/ic_check.xml" value="0.2962962962962963" />
+        <entry key="app/src/main/res/drawable/ic_engineering.xml" value="0.3037037037037037" />
+        <entry key="app/src/main/res/drawable/ic_expand.xml" value="0.2962962962962963" />
         <entry key="app/src/main/res/drawable/ic_google.xml" value="0.2574074074074074" />
+        <entry key="app/src/main/res/drawable/ic_groups.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/drawable/ic_history.xml" value="0.2574074074074074" />
         <entry key="app/src/main/res/drawable/ic_info.xml" value="0.24444444444444444" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3037037037037037" />
+        <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.3037037037037037" />
+        <entry key="app/src/main/res/drawable/ic_lock_75.xml" value="0.28307692307692306" />
         <entry key="app/src/main/res/drawable/ic_manage.xml" value="0.1712962962962963" />
+        <entry key="app/src/main/res/drawable/ic_people.xml" value="0.27291666666666664" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.2962962962962963" />
+        <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.2962962962962963" />
         <entry key="app/src/main/res/drawable/ic_phone_call.xml" value="0.39809765034456257" />
         <entry key="app/src/main/res/drawable/ic_phone_call_.xml" value="0.42512820512820515" />
         <entry key="app/src/main/res/drawable/ic_remove.xml" value="0.10277777777777777" />
         <entry key="app/src/main/res/drawable/ic_replay.xml" value="0.10277777777777777" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.2574074074074074" />
+        <entry key="app/src/main/res/drawable/ic_splah.xml" value="0.2755208333333333" />
+        <entry key="app/src/main/res/drawable/ic_supervisor.xml" value="0.2962962962962963" />
         <entry key="app/src/main/res/drawable/ic_users_circle.xml" value="0.440625" />
+        <entry key="app/src/main/res/drawable/ic_window.xml" value="0.2962962962962963" />
+        <entry key="app/src/main/res/drawable/launch_screen.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/drawable/selector_bottom_navigation.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/transition_background.xml" value="0.1388888888888889" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.39814814814814814" />
         <entry key="app/src/main/res/layout/fragment_bottom_about.xml" value="0.3020833333333333" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_main_flow.xml" value="0.2111971809735116" />
-        <entry key="app/src/main/res/layout/fragment_manage.xml" value="0.16104041957399656" />
+        <entry key="app/src/main/res/layout/fragment_manage.xml" value="0.27114272199159917" />
+        <entry key="app/src/main/res/layout/fragment_permissions.xml" value="0.30085261875761266" />
         <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.24427083333333333" />
-        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.24014336917562723" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tab.xml" value="0.39814814814814814" />
         <entry key="app/src/main/res/layout/item_contact_date.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/item_contact_info.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_history.xml" value="0.7337495799800045" />
         <entry key="app/src/main/res/layout/layout_manage.xml" value="0.2111724104949541" />
         <entry key="app/src/main/res/layout/view_appbar.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/view_manage.xml" value="0.41794871794871796" />
+        <entry key="app/src/main/res/layout/view_permission.xml" value="0.31927083333333334" />
         <entry key="app/src/main/res/menu/menu_manage.xml" value="1.2061855670103092" />
         <entry key="app/src/main/res/menu/menu_toolbar.xml" value="0.30462962962962964" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1388888888888889" />
@@ -58,7 +78,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

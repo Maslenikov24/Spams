@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.github.terrakok.cicerone.Router
 import com.graduate.spams.core.Permissions
-import com.graduate.spams.core.extensions.checkPermission
-import com.graduate.spams.core.extensions.snack
-import com.graduate.spams.core.extensions.subscribe
+import com.graduate.spams.core.extensions.*
 import com.graduate.spams.core.presentation.BaseFragment
 import com.graduate.spams.data.contact.domain.Contact
 import com.graduate.spams.databinding.FragmentRecentBinding
@@ -45,16 +43,18 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 		grantResults: IntArray
 	) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-		var accessCallLog = true
 		permissions.forEachIndexed { index, it ->
 			when (it){
 				Permissions.READ_CALL_LOG -> {
-					if (grantResults[index] != 0) accessCallLog = false
+					if (grantResults[index] != 0) {
+						showPermissionLayout(true)
+					}
+					else {
+						showPermissionLayout(false)
+						viewModel.obtainEvent(RecentEvent.LoadRecent)
+					}
 				}
 			}
-		}
-		if (accessCallLog){
-			viewModel.obtainEvent(RecentEvent.LoadRecent)
 		}
 	}
 
@@ -69,8 +69,13 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 			toolbar.setNavigationOnClickListener {
 				viewModel.obtainEvent(RecentEvent.OpenManage)
 			}
+			acceptPermission.setOnClickListener {
+				allowPermission(requireContext(), Permissions.READ_CALL_LOG)
+			}
 		}
-		if (this.checkPermission(requireContext())) viewModel.obtainEvent(RecentEvent.LoadRecent)
+		if (this.checkPermission(requireContext(), Permissions.READ_CALL_LOG))
+			viewModel.obtainEvent(RecentEvent.LoadRecent)
+		else showPermissionLayout(true)
 	}
 
 	override fun onBackPressed() {
@@ -96,8 +101,21 @@ class RecentFragment: BaseFragment<FragmentRecentBinding>() {
 		}
 	}
 
+	private fun showPermissionLayout(isShow: Boolean){
+		with(binging){
+			recyclerView.visible(false)
+			blockingLayout.visible(isShow)
+		}
+	}
+
 	private fun showData(data : List<Contact>){
-		adapter.items = data
-		adapter.notifyDataSetChanged()
+		with(binging){
+			recyclerView.visible(data.isNotEmpty())
+			emptyAnimationView.visible(data.isNullOrEmpty())
+		}
+		adapter.apply {
+			items = data
+			notifyDataSetChanged()
+		}
 	}
 }

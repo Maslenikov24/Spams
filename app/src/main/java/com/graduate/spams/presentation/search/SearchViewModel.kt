@@ -1,7 +1,9 @@
 package com.graduate.spams.presentation.search
 
+import androidx.lifecycle.viewModelScope
 import com.github.terrakok.cicerone.Router
 import com.graduate.spams.BuildConfig
+import com.graduate.spams.core.PermissionsListener
 import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
 import com.graduate.spams.di.NestedRouter
@@ -10,6 +12,7 @@ import com.graduate.spams.presentation.search.models.SearchEvent
 import com.graduate.spams.presentation.search.models.SearchViewState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -17,8 +20,17 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
 	private val router: Router,
 	@NestedRouter private val nestedRouter: Router,
-	private val searchInteractor: SearchInteractor
+	private val searchInteractor: SearchInteractor,
+	private val permissionsListener: PermissionsListener
 ): BaseViewModel<SearchViewState, SearchAction, SearchEvent>() {
+
+	init {
+		viewModelScope.launch {
+			permissionsListener.collect {
+				viewState = SearchViewState.HideFloatingButton
+			}
+		}
+	}
 
 	private var backPressedOnce = false
 
@@ -30,6 +42,7 @@ class SearchViewModel @Inject constructor(
 			is SearchEvent.BackPressed -> onBackPressed()
 			is SearchEvent.OpenDetail -> navigateToDetail(viewEvent.number)
 			is SearchEvent.OpenManage -> navigateToManage()
+			is SearchEvent.OpenPermissions -> navigateToPermissions()
 			is SearchEvent.DeleteFromHistory -> deleteFromHistory(viewEvent.id)
 			is SearchEvent.DeleteAllHistory -> deleteAllHistory()
 		}
@@ -66,6 +79,8 @@ class SearchViewModel @Inject constructor(
 	}
 
 	private fun navigateToManage() = router.navigateTo(Screens.manage())
+
+	private fun navigateToPermissions() = router.newChain(Screens.manage(), Screens.permissions())
 
 	private fun deleteFromHistory(id: Long){
 		ui{

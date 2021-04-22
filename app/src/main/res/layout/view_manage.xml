@@ -9,26 +9,26 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@drawable/bg_ripple_manage_item"
         android:clickable="true"
         android:focusable="true"
-        android:padding="10dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        tools:srcCompat="@drawable/ic_settings" />
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:srcCompat="@drawable/ic_settings" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:textAppearance="@style/TextAppearance.Manage.Item.Title"
-        tools:text="Настройки" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:textAppearance="@style/TextAppearance.Manage.Item.Title"
+            tools:text="Настройки" />
 
     </LinearLayout>
 

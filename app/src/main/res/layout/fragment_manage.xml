@@ -84,32 +84,33 @@
         <com.graduate.spams.presentation.view.ManageItemView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_settings"
-            app:text="Мои дети" />
+            app:icon="@drawable/ic_supervisor"
+            app:text="Привязанные аккаунты" />
 
         <com.graduate.spams.presentation.view.ManageItemView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_settings"
-            app:text="Группа друзей" />
+            app:icon="@drawable/ic_groups"
+            app:text="Связанная группа" />
 
         <com.graduate.spams.presentation.view.ManageItemView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_settings"
-            app:text="Черный список" />
-
-        <com.graduate.spams.presentation.view.ManageItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:icon="@drawable/ic_settings"
-            app:text="Белый список" />
+            app:icon="@drawable/ic_engineering"
+            app:text="Управление номерами" />
 
         <com.graduate.spams.presentation.view.ManageItemView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_settings"
             app:text="Настройки" />
+
+        <com.graduate.spams.presentation.view.ManageItemView
+            android:id="@+id/permissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_lock_75"
+            app:text="Разрешения" />
 
         <com.graduate.spams.presentation.view.ManageItemView
             android:id="@+id/about"

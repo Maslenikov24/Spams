@@ -29,9 +29,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextAppearance.History.Title" parent="TextAppearance.Medium">
+    <style name="TextAppearance.Title" parent="TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="TextAppearance.History.Title" parent="TextAppearance.Title"/>
+    <style name="TextAppearance.About.Title" parent="TextAppearance.Title"/>
 
     <style name="TextAppearance.History.Clear" parent="TextAppearance.Medium">
         <item name="android:textSize">14sp</item>
@@ -39,7 +42,7 @@
     </style>
 
     <style name="TextAppearance.Manage.UidTitle" parent="TextAppearance.Regular">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/primary75</item>
     </style>
 
@@ -69,16 +72,17 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextAppearance.About.Title" parent="TextAppearance.Medium">
-        <item name="android:textSize">18sp</item>
-    </style>
-
     <style name="TextAppearance.About.Version" parent="TextAppearance.Regular">
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextAppearance.About.Contacts" parent="TextAppearance.Regular">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Permissions.Hint" parent="TextAppearance.Regular">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/primary75</item>
     </style>
 
 </resources>
