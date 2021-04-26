@@ -1,7 +1,7 @@
-package com.graduate.spams.model.call.provider
+package com.graduate.spams.model.call.provider.callLog
 
 import com.graduate.spams.data.contact.domain.Contact
 
-interface ContactsProvider {
+interface CallLogProvider {
 	fun getPhoneBook() : List<Contact>
 }

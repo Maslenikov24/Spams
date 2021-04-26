@@ -13,6 +13,8 @@
     <color name="primary50">#50ffffff</color>
     <color name="primary75">#75ffffff</color>
 
+    <color name="windowFooter">@color/colorPrimaryDark</color>
+
     <color name="bottomLine">@color/colorPrimaryDark</color>
 
     <color name="colorOnSecondary">@color/white</color>

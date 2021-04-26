@@ -15,9 +15,13 @@
     <color name="primary50">#50000000</color>
     <color name="primary75">#75000000</color>
 
-    <color name="positiveColor">#69F0AE</color>
+    <color name="windowFooter">#ebefee</color>
+<!--    <color name="windowFooter">@color/lightGray</color>-->
 
-    <color name="missedCall">#F44336</color>
+    <color name="positiveColor">#69F0AE</color>
+    <color name="colorError">#DC3D31</color>
+
+    <color name="missedCall">#DC3D31</color>
     <color name="incomingCall">@color/darkGray</color>
     <color name="outgoingCall">#4CAF50</color>
     <color name="canceledCall">#0080EF</color>

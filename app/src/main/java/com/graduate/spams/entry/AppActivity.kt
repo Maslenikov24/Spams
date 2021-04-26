@@ -28,7 +28,6 @@ import toothpick.ktp.delegate.inject
 import toothpick.smoothie.lifecycle.closeOnDestroy
 import toothpick.smoothie.viewmodel.installViewModelBinding
 
-@RequiresApi(Build.VERSION_CODES.Q)
 class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val roleManager by lazy { getSystemService(RoleManager::class.java) }
@@ -123,18 +122,20 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     fun initService(){
-        when {
-            roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING) ->
-                Timber.tag("AppLog").d("got role")
-            roleManager.isRoleAvailable(RoleManager.ROLE_CALL_SCREENING) -> {
-                Timber.tag("AppLog").d("cannot hold role")
-                customContract.launch(REQUEST_CALLER_ID_APP)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            when {
+                roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING) ->
+                    Timber.tag("AppLog").d("got role")
+                roleManager.isRoleAvailable(RoleManager.ROLE_CALL_SCREENING) -> {
+                    Timber.tag("AppLog").d("cannot hold role")
+                    customContract.launch(REQUEST_CALLER_ID_APP)
+                }
             }
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     inner class Contract : ActivityResultContract<Int, TransactionResult>(){
         override fun createIntent(context: Context, input: Int?): Intent =
             roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)

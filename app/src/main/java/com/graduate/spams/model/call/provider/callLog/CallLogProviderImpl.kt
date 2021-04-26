@@ -1,4 +1,4 @@
-package com.graduate.spams.model.call.provider
+package com.graduate.spams.model.call.provider.callLog
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,10 +7,13 @@ import android.net.Uri
 import android.provider.CallLog
 import com.graduate.spams.core.extensions.toDate
 import com.graduate.spams.data.contact.domain.Contact
+import com.graduate.spams.core.extensions.getString
+import com.graduate.spams.core.extensions.getInt
+import com.graduate.spams.core.extensions.getLong
 
-class ContactsProviderImpl(
+class CallLogProviderImpl(
     private val context: Context
-) : ContactsProvider {
+) : CallLogProvider {
 
     companion object{
         const val CALLS_ID = CallLog.Calls._ID
@@ -29,12 +32,6 @@ class ContactsProviderImpl(
                 }
             }
         }
-
-        private fun Cursor.getString(param: String) = this.getString(this.getColumnIndex(param))
-
-        private fun Cursor.getInt(param: String) = this.getInt(this.getColumnIndex(param))
-
-        private fun Cursor.getLong(param: String) = this.getLong(this.getColumnIndex(param))
     }
 
     private val callLogs = arrayOf(

@@ -7,4 +7,5 @@
     <string name="permissions_hint">Чтобы отклонить одобренные разрешения обратно, воспользвуйтесь настройками телефона.</string>
     <string name="permissions_for_calls">Для звонков</string>
     <string name="permissions_others">Другое</string>
+    <string name="label_ok">Ок</string>
 </resources>

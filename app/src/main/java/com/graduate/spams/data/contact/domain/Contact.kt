@@ -6,9 +6,9 @@ sealed class Contact {
 		val id: Long,
 		val number: String,
 		val name: String?,
-		val image: String?,
-		val type: Int,
-		val date: Long,
+		val image: String? = null,
+		val type: Int = 0,
+		val date: Long = 0,
 		var count: Int = 1
 	) : Contact()
 

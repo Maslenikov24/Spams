@@ -1,6 +1,7 @@
 package com.graduate.spams.di.module
 
 import android.content.Context
+import com.graduate.spams.core.CallListener
 import com.graduate.spams.core.PermissionsListener
 import com.graduate.spams.model.preferences.app.AppPreferenceStorage
 import com.graduate.spams.model.preferences.app.AppPreferenceStorageImpl
@@ -9,6 +10,8 @@ import com.graduate.spams.di.provider.server.*
 import com.graduate.spams.di.provider.service.AuthServiceProvider
 import com.graduate.spams.di.provider.service.SearchServiceProvider
 import com.graduate.spams.model.auth.net.service.AuthService
+import com.graduate.spams.model.call.provider.IncomingWindowProvider
+import com.graduate.spams.model.call.provider.IncomingWindowProviderImpl
 import com.graduate.spams.model.detail.repository.DeatilRepositoryImpl
 import com.graduate.spams.model.detail.repository.DetailRepository
 import com.graduate.spams.model.manage.ManageRepository
@@ -22,6 +25,8 @@ import com.graduate.spams.model.recent.repository.RecentRepositoryImpl
 import com.graduate.spams.model.search.net.service.SearchService
 import com.graduate.spams.model.search.repository.SearchRepository
 import com.graduate.spams.model.search.repository.SearchRepositoryImpl
+import com.graduate.spams.presentation.detail.DetailInteractor
+import com.graduate.spams.presentation.detail.DetailInteractorImpl
 import com.graduate.spams.presentation.search.SearchInteractor
 import com.graduate.spams.presentation.search.SearchInteractorImpl
 import kotlinx.coroutines.CoroutineDispatcher
@@ -45,6 +50,8 @@ fun appModule(context: Context) = module {
     bind<OkHttpClient>().toProviderInstance(OkHttpClientProvider()).providesSingleton()
     bind<MoshiConverterFactory>().toProviderInstance(MoshiProvider()).providesSingleton()
     bind<String>().withName(ApiPath::class).toProviderInstance(ApiPathProvider()).providesSingleton()
+
+    // DataStore
     bind<AppPreferenceStorage>().toClass<AppPreferenceStorageImpl>().singleton()
     bind<CallPreferenceStorage>().toClass<CallPreferenceStorageImpl>().singleton()
 
@@ -56,12 +63,17 @@ fun appModule(context: Context) = module {
     bind<SearchInteractor>().toClass<SearchInteractorImpl>()
     bind<SearchRepository>().toClass<SearchRepositoryImpl>()
     bind<RecentRepository>().toClass<RecentRepositoryImpl>()
+    bind<DetailInteractor>().toClass<DetailInteractorImpl>()
     bind<DetailRepository>().toClass<DeatilRepositoryImpl>()
     bind<ManageRepository>().toClass<ManageRepositoryImpl>()
     bind<NotificationRepository>().toClass<NotificationRepositoryImpl>()
 
     bind<String>().withName(MacAddress::class).toProvider(MacAddressProvider::class).providesSingleton()
 
+    // EventBus
     bind<PermissionsListener>().singleton()
+    bind<CallListener>().singleton()
+
+    bind<IncomingWindowProvider>().toClass<IncomingWindowProviderImpl>()
 
 }
