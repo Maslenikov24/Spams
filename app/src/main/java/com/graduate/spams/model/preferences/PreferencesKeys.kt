@@ -6,8 +6,10 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 object PreferencesKeys {
 
 	object App {
+		val IS_FIRST_START = booleanPreferencesKey("is_first_start")
 		val IS_DARK_MODE = booleanPreferencesKey("dark_mode")
-		val TOKEN = stringPreferencesKey("token")
+		val REGISTRATION_TOKEN = stringPreferencesKey("registration_token")
+		val SESSION_TOKEN = stringPreferencesKey("session_token")
 		val UID = stringPreferencesKey("uid")
 	}
 

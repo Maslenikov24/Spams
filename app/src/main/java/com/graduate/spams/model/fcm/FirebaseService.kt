@@ -3,7 +3,7 @@ package com.graduate.spams.model.fcm
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.graduate.spams.di.Scopes
-import com.graduate.spams.model.notification.NotificationRepository
+import com.graduate.spams.model.auth.repository.AuthRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
 import timber.log.Timber
@@ -13,7 +13,7 @@ import java.util.*
 
 class FirebaseService : FirebaseMessagingService() {
 
-	private val repository by inject<NotificationRepository>()
+	private val repository by inject<AuthRepository>()
 
 	private val subscriptions = LinkedList<ReceiveChannel<*>>()
 	private val supervisorJob = SupervisorJob()

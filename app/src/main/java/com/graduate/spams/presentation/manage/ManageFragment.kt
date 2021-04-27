@@ -86,7 +86,7 @@ class ManageFragment : BaseFragment<FragmentManageBinding>() {
 		when (viewState){
 			is ManageViewState.ShowUid -> {
 				//TODO: revert
-				//binging.uidNumber.text = viewState.uid
+				binging.uidNumber.text = viewState.uid
 			}
 		}
 	}

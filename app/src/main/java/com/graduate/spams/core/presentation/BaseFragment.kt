@@ -49,7 +49,7 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
 			installModules(openScopes)
 			openScopes
 		}.closeOnDestroy(this)
-		Timber.tag("AppLog").v("${KTP.openScope(Scopes.APP_SCOPE)}")
+		//Timber.tag("AppLog").v("${KTP.openScope(Scopes.APP_SCOPE)}")
 		scope.inject(this)
 
 		//Toothpick.inject(this, scope)

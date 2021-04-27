@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
-import com.graduate.spams.core.extensions.collectAsState
+import com.graduate.spams.core.extensions.tryCollectAsState
 import com.graduate.spams.model.preferences.PreferencesKeys
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -21,7 +20,7 @@ class CallPreferenceStorageImpl @Inject constructor(
 	fun getValue(key: Preferences.Key<Boolean>, defaultValue: Boolean) = dataStore.data
 		.map {
 			it[key] ?: false
-		}.collectAsState(defaultValue) ?: false
+		}.tryCollectAsState(defaultValue) ?: false
 
 	override suspend fun setValue(key: Preferences.Key<Boolean>, value: Boolean) = dataStore
 		.edit {

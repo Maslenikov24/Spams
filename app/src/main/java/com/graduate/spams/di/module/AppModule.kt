@@ -16,8 +16,8 @@ import com.graduate.spams.model.detail.repository.DeatilRepositoryImpl
 import com.graduate.spams.model.detail.repository.DetailRepository
 import com.graduate.spams.model.manage.ManageRepository
 import com.graduate.spams.model.manage.ManageRepositoryImpl
-import com.graduate.spams.model.notification.NotificationRepository
-import com.graduate.spams.model.notification.NotificationRepositoryImpl
+import com.graduate.spams.model.auth.repository.AuthRepository
+import com.graduate.spams.model.auth.repository.AuthRepositoryImpl
 import com.graduate.spams.model.preferences.call.CallPreferenceStorage
 import com.graduate.spams.model.preferences.call.CallPreferenceStorageImpl
 import com.graduate.spams.model.recent.repository.RecentRepository
@@ -47,7 +47,7 @@ fun appModule(context: Context) = module {
 
     // Provider.server
     bind<Retrofit>().toProvider(RetrofitProvider::class).providesSingleton()
-    bind<OkHttpClient>().toProviderInstance(OkHttpClientProvider()).providesSingleton()
+    bind<OkHttpClient>().toProvider(OkHttpClientProvider::class).providesSingleton()
     bind<MoshiConverterFactory>().toProviderInstance(MoshiProvider()).providesSingleton()
     bind<String>().withName(ApiPath::class).toProviderInstance(ApiPathProvider()).providesSingleton()
 
@@ -66,7 +66,7 @@ fun appModule(context: Context) = module {
     bind<DetailInteractor>().toClass<DetailInteractorImpl>()
     bind<DetailRepository>().toClass<DeatilRepositoryImpl>()
     bind<ManageRepository>().toClass<ManageRepositoryImpl>()
-    bind<NotificationRepository>().toClass<NotificationRepositoryImpl>()
+    bind<AuthRepository>().toClass<AuthRepositoryImpl>()
 
     bind<String>().withName(MacAddress::class).toProvider(MacAddressProvider::class).providesSingleton()
 
