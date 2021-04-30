@@ -8,4 +8,9 @@ object ApiMethod {
 	object Number{
 		const val searchNumber = "search"
 	}
+
+	object Invite{
+		const val addChild = "addChild"
+		const val addParent = "addParent"
+	}
 }

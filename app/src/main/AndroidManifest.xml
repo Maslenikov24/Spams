@@ -24,6 +24,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name=".entry.AppActivity"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.Splash"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
             android:screenOrientation="portrait">

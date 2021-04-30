@@ -9,6 +9,7 @@ import com.graduate.spams.core.presentation.BaseViewModel
 import com.graduate.spams.entry.models.AppAction
 import com.graduate.spams.entry.models.AppEvent
 import com.graduate.spams.entry.models.AppViewState
+import com.graduate.spams.presentation.accept.AcceptStartParams
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
@@ -24,6 +25,7 @@ class AppViewModel @Inject constructor(
 		when (viewEvent){
 			is AppEvent.FirstStart -> firstLaunch()
 			is AppEvent.BackPressed -> onBackPressed()
+			is AppEvent.HandleStartEvent -> handleStartEvent(viewEvent.startEvent, viewEvent.isOpenInside, viewEvent)
 		}
 	}
 
@@ -34,6 +36,16 @@ class AppViewModel @Inject constructor(
 			}
 		}
 		router.newRootScreen(Screens.main())
+	}
+
+	private fun handleStartEvent(startEvent: StartEvent, isOpenInside: Boolean, viewEvent: AppEvent){
+		when (startEvent){
+			is StartEvent.Empty -> {}
+			is StartEvent.AcceptParent -> {
+				//if (viewEvent is AppEvent.FirstStart)
+				router.navigateTo(Screens.accept(AcceptStartParams(startEvent.uid)))
+			}
+		}
 	}
 
 	private fun onBackPressed(){

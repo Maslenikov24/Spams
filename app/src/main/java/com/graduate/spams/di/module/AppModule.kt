@@ -8,6 +8,7 @@ import com.graduate.spams.model.preferences.app.AppPreferenceStorageImpl
 import com.graduate.spams.di.*
 import com.graduate.spams.di.provider.server.*
 import com.graduate.spams.di.provider.service.AuthServiceProvider
+import com.graduate.spams.di.provider.service.InviteServiceProvider
 import com.graduate.spams.di.provider.service.SearchServiceProvider
 import com.graduate.spams.model.auth.net.service.AuthService
 import com.graduate.spams.model.call.provider.IncomingWindowProvider
@@ -18,6 +19,9 @@ import com.graduate.spams.model.manage.ManageRepository
 import com.graduate.spams.model.manage.ManageRepositoryImpl
 import com.graduate.spams.model.auth.repository.AuthRepository
 import com.graduate.spams.model.auth.repository.AuthRepositoryImpl
+import com.graduate.spams.model.connect.ConnectRepository
+import com.graduate.spams.model.connect.ConnectRepositoryImpl
+import com.graduate.spams.model.connect.net.service.ConnectService
 import com.graduate.spams.model.preferences.call.CallPreferenceStorage
 import com.graduate.spams.model.preferences.call.CallPreferenceStorageImpl
 import com.graduate.spams.model.recent.repository.RecentRepository
@@ -58,6 +62,7 @@ fun appModule(context: Context) = module {
     // Provider.service
     bind<AuthService>().toProvider(AuthServiceProvider::class).providesSingleton()
     bind<SearchService>().toProvider(SearchServiceProvider::class).providesSingleton()
+    bind<ConnectService>().toProvider(InviteServiceProvider::class).providesSingleton()
 
     // Model
     bind<SearchInteractor>().toClass<SearchInteractorImpl>()
@@ -67,6 +72,7 @@ fun appModule(context: Context) = module {
     bind<DetailRepository>().toClass<DeatilRepositoryImpl>()
     bind<ManageRepository>().toClass<ManageRepositoryImpl>()
     bind<AuthRepository>().toClass<AuthRepositoryImpl>()
+    bind<ConnectRepository>().toClass<ConnectRepositoryImpl>()
 
     bind<String>().withName(MacAddress::class).toProvider(MacAddressProvider::class).providesSingleton()
 

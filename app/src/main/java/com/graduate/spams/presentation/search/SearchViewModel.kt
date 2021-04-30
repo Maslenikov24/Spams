@@ -7,6 +7,7 @@ import com.graduate.spams.core.PermissionsListener
 import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
 import com.graduate.spams.di.NestedRouter
+import com.graduate.spams.presentation.detail.DetailStartParams
 import com.graduate.spams.presentation.search.models.SearchAction
 import com.graduate.spams.presentation.search.models.SearchEvent
 import com.graduate.spams.presentation.search.models.SearchViewState
@@ -74,7 +75,7 @@ class SearchViewModel @Inject constructor(
 	}
 
 	private fun navigateToDetail(number: String) {
-		nestedRouter.navigateTo(Screens.detail(number))
+		nestedRouter.navigateTo(Screens.detail(DetailStartParams(number)))
 		viewAction = SearchAction.Nothing
 	}
 

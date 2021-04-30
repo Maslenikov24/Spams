@@ -10,7 +10,6 @@ import com.graduate.spams.presentation.common.RouterProvider
 import com.graduate.spams.presentation.detail.models.DetailAction
 import com.graduate.spams.presentation.detail.models.DetailEvent
 import com.graduate.spams.presentation.detail.models.DetailViewState
-import com.graduate.spams.presentation.recent.RecentStartParams
 import toothpick.Scope
 import toothpick.ktp.binding.bind
 import toothpick.ktp.binding.module
@@ -80,7 +79,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 		const val ARG_NUMBER = "arg_number"
 		const val ARG_NAME = "arg_name"
 
-		fun newInstance(params: RecentStartParams) = DetailFragment().apply {
+		fun newInstance(params: DetailStartParams) = DetailFragment().apply {
 			arguments = Bundle().apply {
 				putString(ARG_NUMBER, params.number)
 				putString(ARG_NAME, params.name)

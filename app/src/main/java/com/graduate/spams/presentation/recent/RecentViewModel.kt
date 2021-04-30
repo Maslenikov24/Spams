@@ -4,6 +4,7 @@ import com.github.terrakok.cicerone.Router
 import com.graduate.spams.core.Screens
 import com.graduate.spams.core.presentation.BaseViewModel
 import com.graduate.spams.di.NestedRouter
+import com.graduate.spams.presentation.detail.DetailStartParams
 import com.graduate.spams.presentation.recent.models.RecentAction
 import com.graduate.spams.presentation.recent.models.RecentEvent
 import com.graduate.spams.presentation.recent.models.RecentViewState
@@ -30,7 +31,7 @@ class RecentViewModel @Inject constructor(
 	}
 
 	private fun navigateToDetail(number: String, name: String?) =
-		nestedRouter.navigateTo(Screens.detail(number, name))
+		nestedRouter.navigateTo(Screens.detail(DetailStartParams(number, name)))
 
 	private fun navigateToManage() = router.navigateTo(Screens.manage())
 

@@ -59,7 +59,7 @@ class AuthRepositoryImpl @Inject constructor(
 							val request = LoginRequest(uid = uid, registrationToken = token)
 							val result = authService.login(request).fetchData()
 							result?.sessionToken?.let {
-								setValue(PreferencesKeys.App.SESSION_TOKEN, result.sessionToken)
+								sessionToken = result.sessionToken
 								Timber.tag("AppLog").d("Session token: $sessionToken")
 							}
 						}

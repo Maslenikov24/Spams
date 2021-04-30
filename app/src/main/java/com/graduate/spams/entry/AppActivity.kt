@@ -40,17 +40,30 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
+    private val intentHandler by lazy { IntentHandler() }
+
     private val currentFragment: BaseFragment<*>?
         get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFragment<*>
+
+    private fun initAppScope(){
+        KTP.openScope(Scopes.APP_SCOPE)
+            .openSubScope(Scopes.ACTIVITY_SCOPE){
+                it.installViewModelBinding<AppViewModel>(
+                    this,
+                    ToothpickViewModelFactory(Scopes.ACTIVITY_SCOPE)
+                )
+            }.closeOnDestroy(this)
+            .inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initAppScope()
         Timber.tag("AppLog").d("Activity onCreate()")
         super.onCreate(savedInstanceState)
-        Timber.tag("AppLog").d(savedInstanceState.toString())
-        window?.setBackgroundDrawableResource(R.color.background)
+        Timber.tag("AppLog").d("savedInstanceState: ${savedInstanceState.toString()}")
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
         if (savedInstanceState == null) {
             subscribe(viewModel.viewStates(), ::renderViewState)
             subscribe(viewModel.viewActions(), ::renderAction)
@@ -60,6 +73,8 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
                 initService()
             }
         }
+        intentHandler.handleIntent(intent)
+        window?.setBackgroundDrawableResource(R.color.background)
 
     }
 
@@ -72,17 +87,6 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }
-    }
-
-    private fun initAppScope(){
-        KTP.openScope(Scopes.APP_SCOPE)
-            .openSubScope(Scopes.ACTIVITY_SCOPE){
-                it.installViewModelBinding<AppViewModel>(
-                    this,
-                    ToothpickViewModelFactory(Scopes.ACTIVITY_SCOPE)
-                )
-            }.closeOnDestroy(this)
-            .inject(this)
     }
 
     private fun renderViewState(viewState: AppViewState){
@@ -122,7 +126,7 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     }
 
-    fun initService(){
+    private fun initService(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             when {
                 roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING) ->
@@ -150,5 +154,24 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
 
     companion object {
         private const val REQUEST_CALLER_ID_APP = 1
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intentHandler.handleIntent(intent, true)
+    }
+
+    private inner class IntentHandler{
+        fun handleIntent(intent: Intent?, isOpenInside: Boolean = false){
+            if (intent == null) return
+            val uid = intent.getStringExtra("uid")
+            Timber.tag("AppLog handleIntent").d(uid)
+            val startEvent =
+                when{
+                    !uid.isNullOrEmpty() -> StartEvent.AcceptParent(uid)
+                    else -> StartEvent.Empty
+                }
+            viewModel.obtainEvent(AppEvent.HandleStartEvent(startEvent, isOpenInside))
+        }
     }
 }

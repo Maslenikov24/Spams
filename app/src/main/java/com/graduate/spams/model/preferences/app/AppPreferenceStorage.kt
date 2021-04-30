@@ -7,7 +7,7 @@ interface AppPreferenceStorage {
 	val isFirstStart: Flow<Boolean>
 	val uiMode: Flow<UiMode>
 	val registrationToken: Flow<String>
-	val sessionToken: String?
+	var sessionToken: String? //with SH
 	val uid: Flow<String>
 	suspend fun<T> setValue(key: Preferences.Key<T>, value: T): Preferences
 	suspend fun clearPreferenceStorage()

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_content_round"
+        android:paddingStart="14dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="14dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Accept.Label"
+            android:text="Запрос на добавление от:" />
+
+        <TextView
+            android:id="@+id/parentUid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Accept.Uid"
+            tools:text="ex2468264082yd0yd3d08hx3ch" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reject"
+                android:text="Отклонить"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:rippleColor="?attr/colorControlHighlight"
+                android:textColor="@color/primary75"
+                app:strokeColor="@color/primary75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/accept"
+                android:text="Принять"
+                android:layout_marginStart="14dp"
+                android:textColor="@color/colorAccent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:rippleColor="?attr/colorControlHighlight"
+                app:strokeColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

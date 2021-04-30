@@ -82,6 +82,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.graduate.spams.presentation.view.ManageItemView
+            android:id="@+id/invite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_supervisor"

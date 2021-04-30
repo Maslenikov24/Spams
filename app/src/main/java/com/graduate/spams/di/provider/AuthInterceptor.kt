@@ -13,6 +13,7 @@ class AuthInterceptor(
 			chain.request()
 				.newBuilder()
 				.addHeader("Authorization", it)
+				.addHeader("Content-Type", "application/json; charset=utf-8")
 				.build()
 		} ?: chain.request()
 		return chain.proceed(request)

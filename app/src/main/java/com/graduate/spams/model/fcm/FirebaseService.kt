@@ -1,8 +1,17 @@
 package com.graduate.spams.model.fcm
 
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.media.RingtoneManager
+import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.graduate.spams.BuildConfig
+import com.graduate.spams.R
 import com.graduate.spams.di.Scopes
+import com.graduate.spams.entry.AppActivity
 import com.graduate.spams.model.auth.repository.AuthRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
@@ -47,8 +56,33 @@ class FirebaseService : FirebaseMessagingService() {
 		super.onMessageSent(message)
 	}
 
-	override fun onMessageReceived(message: RemoteMessage) {
-		super.onMessageReceived(message)
+	companion object {
+		private const val DEFAULT_NOTIFICATION_CHANNEL_ID = "${BuildConfig.APPLICATION_ID}.DEFAULT"
+	}
+
+	override fun onMessageReceived(remoteMessage: RemoteMessage) {
+		super.onMessageReceived(remoteMessage)
+
+		val notificationBuilder = NotificationCompat.Builder(this, DEFAULT_NOTIFICATION_CHANNEL_ID)
+			.setContentTitle(remoteMessage.notification?.title)
+			.setContentText(remoteMessage.notification?.body)
+			.setPriority(NotificationCompat.PRIORITY_HIGH)
+			.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+			.setSmallIcon(R.drawable.ic_admin_panel)
+			//.setColor(ContextCompat.getColor(applicationContext, R.color.colorNotification))
+			.apply {
+				val uid = remoteMessage.data[NotificationHandler.UID]
+				Timber.tag("AppLog").d(uid)
+				val intent = Intent(applicationContext, AppActivity::class.java)
+				intent.putExtra(NotificationHandler.UID, uid)
+				val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+				setContentIntent(pendingIntent)
+			}
+			.setAutoCancel(true)
+
+		val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+		notificationManager.notify(0, notificationBuilder.build())
 	}
 
 	override fun onNewToken(token: String) {

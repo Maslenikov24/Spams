@@ -55,7 +55,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 				setColorFilter(requireContext().getColor(R.color.primary75), PorterDuff.Mode.SRC_IN)
 				setOnClickListener {
 					val phoneNumber = binging.searchInput.text.toString()
-					viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
+					if (phoneNumber.isNotBlank()) viewModel.obtainEvent(SearchEvent.SearchNumber(phoneNumber))
+					//TODO: hide keyboard
 				}
 			}
 
