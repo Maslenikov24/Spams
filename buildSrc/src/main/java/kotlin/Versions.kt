@@ -1,7 +1,7 @@
 object Versions {
 
     //Plugins
-    const val android_gradle_plugin = "7.0.0-alpha14"
+    const val android_gradle_plugin = "7.0.2"
     const val kotlin_version = "1.4.30"
     const val google_services = "4.3.5"
     const val plugins_android_junit5 = "1.5.2.0"
