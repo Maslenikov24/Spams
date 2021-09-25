@@ -1,6 +1,7 @@
-//This app about
+This is an application for detecting spam calls and malicious calls.
+*(Backend is not available)*
 
-##Technology stack
+## Key things I've dealt with
 + MVI
 + Coroutines
 + Toothpick
@@ -9,27 +10,19 @@
 + Retrofit+Okhttp3+Moshi
 + EventBus (StateFlow/SharedFlow)
 + Cicerone (+ nested + custom animation)
-+ Material (+Night mode)
++ Material (+ Night mode)
 + buildSrc
 + gradle.kts
-+ Call(Screening)Services (+ BroadcastReceiver)
++ Call(Screening)Services (+ DeprecatedCallService)
 + Firebase CloudMessaging
 + Permissions
 
-##BackStack
-± ErrorHandlers
-± splash screen
-- Firebase Crashlitics
-- intent-filters, BroadCastReceiver....
-- Check for first start (token)
-- preview screens 
-- deferred request
-- Motion Layout!!!
-- CallService
-- Auth + Detail + ... screens
-- Design
-- reducer
-- res (все в res)
-- Настроить кэш запрошенных телефонов с лимитом в 50 номеров
-- Всплывашка о том, сколько телефонов зареджектилось
+## Backlog
+- ErrorHandlers
+- Splash screen
+- Preview screens
+- Deferred request
 - Motion Layout
+- Reducer
+- Cache limit
+- Count of rejected numbers
